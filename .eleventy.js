@@ -6,6 +6,20 @@ const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
 
 const mermaidShortcode = require('./_shortcodes/mermaid');
 const mermaidFullscreenJsShortcode = require('./_shortcodes/mermaid_fullscreen_js');
+const {statusMarks} = require('./_filters/statusMarks');
+
+const noCircular = (key, value) => {
+  const circular = ['ctx', 'parent'];
+  if(circular.includes(key)) {
+    // replace circular refs with their id or null
+    return value.id || null;
+  }
+  return value;
+};
+
+function formatJSON({data, replacer = noCircular}) {
+  return JSON.stringify(data, replacer, 2);
+};
 
 module.exports = function(eleventyConfig) {
   /* Markdown Overrides */
@@ -23,6 +37,12 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addShortcode('mermaid_with_callback_js', mermaidFullscreenJsShortcode);
   // add fullscreen-able mermaid display
   eleventyConfig.addPairedShortcode('mermaid', mermaidShortcode);
+
+  eleventyConfig.addFilter('getOptional', (optional) => optional ? 'optional' : 'not-optional');
+  eleventyConfig.addFilter('getStatusMark', (status) => statusMarks[status]);
+  eleventyConfig.addFilter('formatJSON', (data) => JSON.stringify(data, null, 2));
+  eleventyConfig.addFilter('formatError', ({name, message, stack} = {}) =>
+    formatJSON({data: {name, message, stack}}));
 
   eleventyConfig.addTemplateFormats('scss');
   // Creates the extension for use
