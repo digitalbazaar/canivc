@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-US" }}">
+  <head>
+    <meta charset="UTF-8">
+
+    {% include 'seo' %}
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style" type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/prismjs@1/themes/prism.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.9.2/dist/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+  </head>
+  <body>
+    <a id="skip-to-content" href="#content">Skip to the content.</a>
+
+    <header class="page-header" role="banner">
+      <h1 class="project-name">{{ site.title }}</h1>
+      <h2 class="project-tagline">{{ site.description }}</h2>
+    </header>
+
+    <main id="content" class="main-content" role="main">
+      {{ content }}
+
+      <footer class="site-footer">
+        <p><strong>Can I Verifiable Credential...</strong></p>
+        <p>
+          Launched and maintained by the good folks at
+          <a href="https://digitalbazaar.com/">Digital Bazaar, Inc.</a>
+        </p>
+
+        <p>
+          Based on the original <a href="https://www.caniuse.com">caniuse.com</a>
+          by <a href="https://front-end.social/@Fyrd">@Fyrd</a> and designed by
+          <a href="https://mastodon.world/@lensco">@Lensco</a>.
+        </p>
+        
+        <p>
+          If you see something wrong, please report bugs on GitHub.
+        </p> 
+      </footer>
+    </main>
+    {% mermaid_with_callback_js %}
+    <script src="https://cdn.jsdelivr.net/npm/svg-pan-zoom@3/dist/svg-pan-zoom.min.js"></script>
+  </body>
+</html>
