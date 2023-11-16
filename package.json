@@ -1,7 +1,7 @@
 {
-  "name": "chapi.io",
+  "name": "canivc",
   "version": "0.0.0",
-  "description": "chapi.io website & developer documentation site for the Credential Handler API",
+  "description": "Community compatibility dashboard for Verifiable Credentials.",
   "main": "index.js",
   "scripts": {
     "build": "eleventy",
@@ -9,11 +9,11 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "CHAPI",
-    "Credential",
-    "Handler",
     "Verifiable",
-    "Credentials"
+    "Credentials",
+    "W3C",
+    "crypto",
+    "tests"
   ],
   "author": "Digital Bazaar, Inc.",
   "license": "BSD-3-Clause",
