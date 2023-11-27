@@ -1,10 +1,6 @@
----
-title: "License"
-permalink: /license/
----
 # BSD 3-Clause License
 
-Copyright (c) 2022, Digital Bazaar, Inc.
+Copyright (c) 2023, Digital Bazaar, Inc.
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without

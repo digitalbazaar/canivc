@@ -15,4 +15,4 @@ $ npm run serve # or `build` for just file generation
 If all worked as hoped, you can visit https://localhost:8080/ to test the site.
 
 ## License
-[BSD-3-Clause](license) © 2023 Digital Bazaar, Inc.
+[BSD-3-Clause](LICENSE.md) © 2023 Digital Bazaar, Inc.
