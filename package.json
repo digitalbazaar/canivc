@@ -26,6 +26,7 @@
   "dependencies": {
     "markdown-it-anchor": "^8.6.7",
     "sass": "^1.66.0",
+    "vc-api-test-suite-implementations": "github:w3c-ccg/vc-api-test-suite-implementations",
     "vc-test-suite-implementations": "github:w3c/vc-test-suite-implementations"
   }
 }
