@@ -1,14 +1,30 @@
----
-pagination:
-  data: results.matrices
-  size: 1
-  alias: matrix
-permalink: "/suites/{{ slugify matrix.title }}"
+---js
+{
+  pagination: {
+    before: function (paginationData) {
+      let suites = [];
+      // add respecConfig.shortName to each matrix
+      paginationData.forEach((suite) => {
+        let matrices = suite.matrices;
+        const matricesMapped = matrices.map((matrix) => {
+          matrix.reportName = suite.respecConfig.shortName;
+          return matrix;
+        });
+        suites = suites.concat(matricesMapped);
+      });
+      console.dir(suites);
+      // combine matricies into single array
+      // output suites
+      return suites;
+    },
+    data: "results",
+    size: 1,
+    alias: "matrix"
+  },
+  permalink: "/reports/{{ slugify matrix.reportName }}/suites/{{ slugify matrix.title }}/"
+}
 ---
 
-<textarea>{{ formatJSON matrix }}</textarea>
-
-# {{ matrix.title }}
 <section class="informative" id="{{matrix.title}}">
   <h2>{{matrix.title}}</h2>
   <style>
