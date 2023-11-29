@@ -14,7 +14,7 @@ permalink: "/implementations/{{ implementation | slugify }}"
 {% if imp.issuers %}
 ### Issuers
 {% for issuer in imp.issuers %}
-`{{ issuer.id }}`
+`{{ issuer.endpoint }}`
 <div class="ui tiny labels">{% for tag in issuer.tags %}<span class="ui tag label">{{ tag }}</span>{% endfor %}</div>
 
 ---
@@ -24,7 +24,7 @@ permalink: "/implementations/{{ implementation | slugify }}"
 {% if imp.verifiers %}
 ### Verifiers
 {% for verifier in imp.verifiers %}
-`{{ verifier.id }}`
+`{{ verifier.endpoint }}`
 <div class="ui tiny labels">{% for tag in verifier.tags %}<span class="ui tag label">{{ tag }}</span>{% endfor %}</div>
 
 ---
@@ -34,7 +34,7 @@ permalink: "/implementations/{{ implementation | slugify }}"
 {% if imp.vpVerifiers %}
 ### Verifiable Presentation Verifiers
 {% for verifier in imp.vpVerifiers %}
-`{{ verifier.id }}`
+`{{ vpVerifier.endpoint }}`
 <div class="ui tiny labels">{% for tag in verifier.tags %}<span class="ui tag label">{{ tag }}</span>{% endfor %}</div>
 
 ---
