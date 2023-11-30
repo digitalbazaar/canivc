@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "eleventy",
+    "lint": "eslint .",
     "serve": "rm -rf _site/ && eleventy --serve",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -21,7 +22,11 @@
     "@11ty/eleventy": "^2.0.1",
     "@11ty/eleventy-fetch": "^4.0.0",
     "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
-    "@kevingimbel/eleventy-plugin-mermaid": "^2.1.0"
+    "@kevingimbel/eleventy-plugin-mermaid": "^2.1.0",
+    "eslint": "^8.52.0",
+    "eslint-config-digitalbazaar": "^5.0.1",
+    "eslint-plugin-jsdoc": "^46.8.2",
+    "eslint-plugin-unicorn": "^48.0.1"
   },
   "dependencies": {
     "markdown-it-anchor": "^8.6.7",
