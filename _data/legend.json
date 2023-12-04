@@ -1,0 +1,10 @@
+[
+  { "id": "pending", "icon": "🛑", "label": "Pending" },
+  { "id": "passing", "icon": "✓", "label": "Passing" },
+  { "id": "failing", "icon": "❌", "label": "Failing" },
+  { "id": "accessDenied", "icon": "⊘", "label": "Access Denied" },
+  { "id": "timeout", "icon": "⏱", "label": "Timeout" },
+  { "id": "notImplemented", "icon": "—", "label": "Not Implemented" },
+  { "id": "passed", "icon": "✓", "label": "Passed" },
+  { "id": "failed", "icon": "❌", "label": "Failed" }
+]
