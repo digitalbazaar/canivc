@@ -1,13 +1,19 @@
+// Imports
 const sass = require('sass');
 const markdownIt = require('markdown-it');
+const legend = require('./_data/legend.json');
 const markdownItAnchor = require('markdown-it-anchor');
-const eleventyMermaidPlugin = require('@kevingimbel/eleventy-plugin-mermaid');
-const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
-
 const mermaidShortcode = require('./_shortcodes/mermaid');
+const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
+const eleventyMermaidPlugin = require('@kevingimbel/eleventy-plugin-mermaid');
 const mermaidFullscreenJsShortcode = require('./_shortcodes/mermaid_fullscreen_js');
-const {statusMarks} = require('./_filters/statusMarks');
 
+// Constants
+const statusMarks = legend.reduce((all, statusMark) => {
+  return { ...all, [statusMark.id]: statusMark.icon };
+}, {});
+
+// Helper Functions
 const noCircular = (key, value) => {
   const circular = ['ctx', 'parent'];
   if(circular.includes(key)) {
@@ -21,6 +27,7 @@ function formatJSON({data, replacer = noCircular}) {
   return JSON.stringify(data, replacer, 2);
 };
 
+// Eleventy Configurations
 module.exports = function(eleventyConfig) {
   /* Markdown Overrides */
   const markdownLibrary = markdownIt({

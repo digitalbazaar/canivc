@@ -1,7 +1,7 @@
 @import "normalize";
 @import "rouge-github";
 @import "variables";
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap");
 
 @mixin large {
   @media screen and (min-width: #{$large-breakpoint}) {
@@ -167,8 +167,8 @@ a {
   }
 
   @include large {
-    max-width: 64rem;
-    padding: 2rem 6rem;
+    max-width: 80rem;
+    padding: 2rem 0rem;
     margin: 0 auto;
     font-size: 1.1rem;
   }
@@ -182,7 +182,7 @@ a {
     padding: 2rem 1rem;
     font-size: 1rem;
   }
-  
+
   kbd {
     background-color: #fafbfc;
     border: 1px solid #c6cbd1;
@@ -351,6 +351,9 @@ a {
 }
 
 .site-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   padding-top: 2rem;
   margin-top: 2rem;
   border-top: solid 1px $hr-border-color;
@@ -366,6 +369,19 @@ a {
   @include small {
     font-size: 0.9rem;
   }
+}
+
+.site-footer-section {
+  margin-right: 15px;
+  flex-basis: 100px;
+  flex-grow: 0;
+  min-width: 11em;
+  min-width: max-content;
+}
+
+.site-footer-section-list {
+  padding: 0;
+  list-style-type: none; 
 }
 
 .site-footer-owner {
