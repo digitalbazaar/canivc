@@ -2,15 +2,27 @@
 showHero: true
 ---
 
-Can I Verifiable Credential?
+<div class="ui one column stackable grid container">
+  <div class="column">
+    <div class="ui segment">
+      {% include "components/TestSuiteList.md" %}
+    </div>
+  </div>
+</div>
 
-<ul>
-{% for report in results %}
-  <li><a href="/reports/{{ report.respecConfig.shortName | slugify }}">{{ report.respecConfig.subtitle }}</a></li>
-  <ul>
-  {% for matrix in report.matrices %}
-    <li><a href="/reports/{{ report.respecConfig.shortName | slugify }}/suites/{{ matrix.title | slugify }}">{{ matrix.title }}</a></li>
-  {% endfor %}
-  </ul>
+<div class="ui two column stackable grid container">
+{% for items in homePage %}
+  <div class="column">
+    <div class="ui very padded segment">
+      {%
+        include "components/BlockList.md"
+          listTitle: items.listTitle
+          itemList: items.listItems
+          buttonText: items.buttonText
+      %}
+    </div>
+  </div>
 {% endfor %}
-</ul>
+</div>
+
+

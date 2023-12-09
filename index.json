@@ -1,0 +1,100 @@
+{
+  "homePage": [
+    {
+      "listTitle": "Latest features",
+      "listItems": [
+        {
+          "text": "CSS vh unit",
+          "link": "/",
+          "subtext": "October 01, 2023"
+        },
+        {
+          "text": "HTML < abbr > element",
+          "link": "/",
+          "subtext": "September 13, 2023"
+        },
+        {
+          "text": "HTML < def > element",
+          "link": "/",
+          "subtext": "September 11, 2023"
+        },
+        {
+          "text": "HTML < hr > element",
+          "link": "/",
+          "subtext": "September 08, 2023"
+        },
+        {
+          "text": "CSS Nesting",
+          "link": "/",
+          "subtext": "August 31, 2023"
+        }
+      ],
+      "buttonText": "View all features",
+      "buttonLink": "/"
+    },
+    {
+      "listTitle": "Latest news",
+      "listItems": [
+        {
+          "text": "April 2023 updates",
+          "link": "/",
+          "subtext": "April 30, 2023"
+        },
+        {
+          "text": "February 2023 updates",
+          "link": "/",
+          "subtext": "February 28, 2023"
+        },
+        {
+          "text": "January 2023 updates",
+          "link": "/",
+          "subtext": "January 31, 2023"
+        },
+        {
+          "text": "December 2022 updates",
+          "link": "/",
+          "subtext": "December 30, 2022"
+        },
+        {
+          "text": "September 2022 updates",
+          "link": "/",
+          "subtext": "September 29, 2022"
+        }
+      ],
+      "buttonText": "View all news",
+      "buttonLink": "/"
+    },
+    {
+      "listTitle": "Client scores",
+      "listItems": [
+        {
+          "text": "Apple Mail (macOS)",
+          "link": "/",
+          "subtext": "245/262"
+        },
+        {
+          "text": "Apple Mail (iOS)",
+          "link": "/",
+          "subtext": "245/262"
+        },
+        {
+          "text": "Outlook (macOS)",
+          "link": "/",
+          "subtext": "232/262"
+        },
+        {
+          "text": "Samsung Email (Android)",
+          "link": "/",
+          "subtext": "222/262"
+        },
+        {
+          "text": "WEB.DE (iOS)",
+          "link": "/",
+          "subtext": "222/262"
+        }
+      ],
+      "buttonText": "View the scoreboard",
+      "buttonLink": "/"
+    }
+  ]
+}
