@@ -1,0 +1,11 @@
+<div>
+  <h2 style="border-bottom: 2px solid gray; width: fit-content">
+    {{ listTitle }}
+  </h2>
+  <div class="ui bulleted list">
+    {% for item in itemList %}
+      <div class="item"><a href={{item.link}}>{{ item.text }}</a>, {{ item.subtext }}</div>
+    {% endfor %}
+  </div>
+  <button class="ui button">{{ buttonText }}</button>
+</div>
