@@ -14,8 +14,17 @@
   </head>
   <body>
     <main id="content" role="main">
-      {{ content }}
-      {% include "components/Footer.html" %}
+      <div class="ui container" style="margin-top: -1em; margin-bottom: 1em;">
+        {% include "components/Header.html" %}
+      </div>
+      <div class="ui container">
+        {{ content }}
+      </div>
+      <div class="ui very padded vertical segment" style="margin-top: 3em">
+        <div class="ui container">
+          {% include "components/Footer.html" %}
+        </div>
+      </div>
     </main>
     {% mermaid_with_callback_js %}
     <script src="https://cdn.jsdelivr.net/npm/svg-pan-zoom@3/dist/svg-pan-zoom.min.js"></script>
