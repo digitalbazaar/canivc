@@ -1,0 +1,34 @@
+<div class="ui very padded vertical footer segment">
+  <div class="ui container">
+    <div class="ui stackable grid">
+      <div class="eight wide column">
+        <h4 class="ui header">Can I Verifiable Credential...</h4>
+        <p>
+          Launched and maintained by the good folks at
+          <a href="https://digitalbazaar.com/">Digital Bazaar, Inc.</a>
+        </p>
+        <p>
+          Based on the original
+          <a href="https://www.caniuse.com">caniuse.com</a> by
+          <a href="https://front-end.social/@Fyrd">@Fyrd</a> and designed by
+          <a href="https://mastodon.world/@lensco">@Lensco</a>.
+        </p>
+        <p>If you see something wrong, please report bugs on GitHub.</p>
+      </div>
+      <div class="four wide column">
+        <h4 class="ui header">Site Links</h4>
+        <div class="ui link list">
+          <a href="/">Home</a>
+        </div>
+      </div>
+      <div class="four wide column">
+        <h4 class="ui header">Legend</h4>
+        <div class="ui list">
+          {% for statusMark in legend %}
+          <div>{{ statusMark.icon }} = {{ statusMark.label }}</div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

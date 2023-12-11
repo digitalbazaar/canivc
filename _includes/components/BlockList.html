@@ -4,7 +4,9 @@
   </h2>
   <div class="ui bulleted list">
     {% for item in itemList %}
-      <div class="item"><a href={{item.link}}>{{ item.text }}</a>, {{ item.subtext }}</div>
+    <div class="item">
+      <a href="{{ item.link }}">{{ item.text }}</a>, {{ item.subtext }}
+    </div>
     {% endfor %}
   </div>
   <button class="ui button">{{ buttonText }}</button>
