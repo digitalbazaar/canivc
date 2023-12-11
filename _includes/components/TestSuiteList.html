@@ -1,4 +1,3 @@
-
 <details class="ui accordion">
   <summary class="title">
     <i class="dropdown icon"></i>
@@ -6,22 +5,24 @@
   </summary>
   <div class="content">
     <ul>
-    {% for report in results %}
+      {% for report in results %}
       <li>
         <a href="/reports/{{ report.respecConfig.shortName | slugify }}">
           {{ report.respecConfig.subtitle }}
         </a>
       </li>
       <ul>
-      {% for matrix in report.matrices %}
+        {% for matrix in report.matrices %}
         <li>
-          <a href="/reports/{{ report.respecConfig.shortName | slugify }}/suites/{{ matrix.title | slugify }}">
+          <a
+            href="/reports/{{ report.respecConfig.shortName | slugify }}/suites/{{ matrix.title | slugify }}"
+          >
             {{ matrix.title }}
           </a>
         </li>
-      {% endfor %}
+        {% endfor %}
       </ul>
-    {% endfor %}
+      {% endfor %}
     </ul>
   </div>
 </details>

@@ -1,11 +1,10 @@
 ---
 showHero: true
 ---
-
 <div class="ui one column stackable grid container">
   <div class="column">
     <div class="ui segment">
-      {% include "components/TestSuiteList.md" %}
+      {% include "components/TestSuiteList.html" %}
     </div>
   </div>
 </div>
@@ -15,7 +14,7 @@ showHero: true
   <div class="column">
     <div class="ui very padded segment">
       {%
-        include "components/BlockList.md"
+        include "components/BlockList.html"
           listTitle: items.listTitle
           itemList: items.listItems
           buttonText: items.buttonText
