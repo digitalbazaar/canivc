@@ -2,7 +2,7 @@
   <div class="ui large header">
     Can I
     <div class="ui input">
-      <input type="text" placeholder="did:key, Ed25519..." />
+      <input type="text" placeholder="did:key, Ed25519..." id="searchField" />
     </div>
     ?
     <button class="ui basic inverted button">
@@ -11,3 +11,11 @@
     </button>
   </div>
 </div>
+
+<div id="searchResults" class="ui list segment" style="display: none"></div>
+
+<div id="noResultsFound" class="ui segment" style="display: none">
+    <p>No results found.</p>
+</div>
+
+<script type="text/javascript" src="/_js/search.js"></script>
