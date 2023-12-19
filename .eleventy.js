@@ -2,6 +2,7 @@
 const sass = require('sass');
 const markdownIt = require('markdown-it');
 const legend = require('./_data/legend.json');
+const BarRating = require("./_shortcodes/BarRating")
 const markdownItAnchor = require('markdown-it-anchor');
 const mermaidShortcode = require('./_shortcodes/mermaid');
 const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
@@ -40,6 +41,10 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addPlugin(syntaxHighlight);
   eleventyConfig.addPlugin(eleventyMermaidPlugin, { extra_classes: 'attached' });
+  
+  // Shortcode components
+  eleventyConfig.addShortcode('BarRating', BarRating);
+
   // add custom JS for loading SVG pan/zoom features
   eleventyConfig.addShortcode('mermaid_with_callback_js', mermaidFullscreenJsShortcode);
   // add fullscreen-able mermaid display
