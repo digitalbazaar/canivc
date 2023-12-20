@@ -46,15 +46,22 @@
           <!--These contain if the test passed, failed, or was skipped-->
           {% for cell in row.cells %}
             <td class="{{ cell.state | getStatusColors }} {{ cell.optional | getOptional }}">
-              <div class="ui simple dropdown item center aligned" style="width: 100%">
+              <div 
+                class="ui simple dropdown item" 
+                style="
+                  width: 100%;
+                  display: flex;
+                  min-height: 40px;
+                  align-items: center;
+                  justify-content: center;
+                "
+              >
                 <div>{{ cell.state | getStatusMark }}</div>
-                  <div class="menu">
-                  {% if cell.err %}    
-                    <div class="item">{{ cell.err.name }}: {{ cell.err.message }}</div>
-                  {% else %}
-                    <div class="item">{{ cell.state | getStatusLabel }}</div>
-                  {% endif %}
+                {% if cell.err %}    
+                  <div class="menu" style="width: 100%">
+                    <div class="item">{{ cell.err.message }}</div>
                   </div>
+                {% endif %}
               </div>
             </td>
           {% endfor %}
