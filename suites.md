@@ -58,7 +58,7 @@
               >
                 <div>{{ cell.state | getStatusMark }}</div>
                 {% if cell.err %}    
-                  <div class="menu" style="width: 100%">
+                  <div class="menu">
                     <div class="item">{{ cell.err.message }}</div>
                   </div>
                 {% endif %}

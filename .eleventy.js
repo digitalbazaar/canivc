@@ -61,8 +61,6 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter('getStatusColors', (status) => statusColors[status]);
   eleventyConfig.addFilter('getStatusMark', (status) => statusMarks[status]);
   eleventyConfig.addFilter('formatJSON', (data) => JSON.stringify(data, null, 2));
-  eleventyConfig.addFilter('formatError', ({name, message, stack} = {}) =>
-    formatJSON({data: {name, message, stack}}));
 
   eleventyConfig.addTemplateFormats('scss');
   // Creates the extension for use
