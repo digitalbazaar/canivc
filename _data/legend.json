@@ -1,10 +1,10 @@
 [
-  { "id": "pending", "icon": "🛑", "label": "Pending" },
-  { "id": "passing", "icon": "✓", "label": "Passing" },
-  { "id": "failing", "icon": "❌", "label": "Failing" },
-  { "id": "accessDenied", "icon": "⊘", "label": "Access Denied" },
-  { "id": "timeout", "icon": "⏱", "label": "Timeout" },
-  { "id": "notImplemented", "icon": "—", "label": "Not Implemented" },
-  { "id": "passed", "icon": "✓", "label": "Passed" },
-  { "id": "failed", "icon": "❌", "label": "Failed" }
+  { "id": "pending", "icon": "🛑", "label": "Pending", "color": "blue" },
+  { "id": "passing", "icon": "<i class=\"large green checkmark icon\"></i>", "label": "Passing", "color": "" },
+  { "id": "failing", "icon": "❌", "label": "Failing", "color": "red" },
+  { "id": "accessDenied", "icon": "⊘", "label": "Access Denied", "color": "red" },
+  { "id": "timeout", "icon": "⏱", "label": "Timeout", "color": "orange" },
+  { "id": "notImplemented", "icon": "—", "label": "Not Implemented" , "color": "yellow"},
+  { "id": "passed", "icon": "<i class=\"large green checkmark icon\"></i>", "label": "Passed", "color": ""},
+  { "id": "failed", "icon": "❌", "label": "Failed", "color": "red" }
 ]

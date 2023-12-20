@@ -13,6 +13,12 @@ const mermaidFullscreenJsShortcode = require('./_shortcodes/mermaid_fullscreen_j
 const statusMarks = legend.reduce((all, statusMark) => {
   return { ...all, [statusMark.id]: statusMark.icon };
 }, {});
+const statusColors = legend.reduce((all, statusMark) => {
+  return { ...all, [statusMark.id]: statusMark.color };
+}, {});
+const statusLabel = legend.reduce((all, statusMark) => {
+  return { ...all, [statusMark.id]: statusMark.label };
+}, {});
 
 // Helper Functions
 const noCircular = (key, value) => {
@@ -51,6 +57,8 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPairedShortcode('mermaid', mermaidShortcode);
 
   eleventyConfig.addFilter('getOptional', (optional) => optional ? 'optional' : 'not-optional');
+  eleventyConfig.addFilter('getStatusLabel', (status) => statusLabel[status]);
+  eleventyConfig.addFilter('getStatusColors', (status) => statusColors[status]);
   eleventyConfig.addFilter('getStatusMark', (status) => statusMarks[status]);
   eleventyConfig.addFilter('formatJSON', (data) => JSON.stringify(data, null, 2));
   eleventyConfig.addFilter('formatError', ({name, message, stack} = {}) =>
