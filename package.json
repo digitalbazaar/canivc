@@ -26,7 +26,8 @@
     "eslint": "^8.52.0",
     "eslint-config-digitalbazaar": "^5.0.1",
     "eslint-plugin-jsdoc": "^46.8.2",
-    "eslint-plugin-unicorn": "^48.0.1"
+    "eslint-plugin-unicorn": "^48.0.1",
+    "pagefind": "^1.0.4"
   },
   "dependencies": {
     "markdown-it-anchor": "^8.6.7",
