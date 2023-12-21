@@ -1,6 +1,7 @@
 // Imports
 const sass = require('sass');
 const markdownIt = require('markdown-it');
+const { execSync } = require('child_process')
 const legend = require('./_data/legend.json');
 const BarRating = require("./_shortcodes/BarRating")
 const markdownItAnchor = require('markdown-it-anchor');
@@ -75,6 +76,11 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy('**/*.jpg');
   eleventyConfig.addPassthroughCopy('**/*.png');
   eleventyConfig.addPassthroughCopy("./_js");
+
+  // Run pagefind script after site has built
+  eleventyConfig.on('eleventy.after', () => {
+    execSync(`npx -y pagefind --site _site`, { encoding: 'utf-8' })
+  })
 
   // Return your Object options:
   return {
