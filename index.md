@@ -7,6 +7,8 @@ showHero: true
   </div>
 </div>
 
+{% include "components/SearchResults.html" %}
+
 <div class="ui two column stackable grid">
 {% for items in homePage.blockList %}
   <div class="column">

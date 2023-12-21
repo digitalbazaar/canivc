@@ -1,7 +1,7 @@
 <div class="ui center aligned padded blue inverted segment">
-  <div class="ui large header">
+  <div class="ui massive header">
     Can I
-    <div class="ui input">
+    <div class="ui mini input">
       <input type="text" placeholder="did:key, Ed25519..." id="searchField" />
     </div>
     ?
@@ -12,10 +12,17 @@
   </div>
 </div>
 
-<div id="searchResults" class="ui list segment" style="display: none"></div>
+<script>
+  // Trigger search by writing input to pagefind input
+  document.getElementById("searchField").addEventListener("input", getInput);
 
-<div id="noResultsFound" class="ui segment" style="display: none">
-    <p>No results found.</p>
-</div>
-
-<script type="text/javascript" src="/_js/search.js"></script>
+  // Copy input into pagefind component
+  function getInput(event) {
+    var value = event.currentTarget.value
+    const pagefindElements = document.getElementById("search");
+    const searchInput = pagefindElements.children[0].children[0].children[0];
+    searchInput.value = value;
+    var event = new Event("input");
+    searchInput.dispatchEvent(event);
+  }
+</script>
