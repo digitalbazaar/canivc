@@ -28,11 +28,11 @@
 
   // Copy input into pagefind component
   function getInput(event) {
-    var value = event.currentTarget.value
+    const value = event.currentTarget.value;
     const pagefindElements = document.getElementById("search");
     const searchInput = pagefindElements.children[0].children[0].children[0];
     searchInput.value = value;
-    var event = new Event("input");
+    const event = new Event("input");
     searchInput.dispatchEvent(event);
   }
 </script>
