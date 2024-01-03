@@ -32,7 +32,7 @@
     const pagefindElements = document.getElementById("search");
     const searchInput = pagefindElements.children[0].children[0].children[0];
     searchInput.value = value;
-    const event = new Event("input");
-    searchInput.dispatchEvent(event);
+    const inputEvent = new Event("input");
+    searchInput.dispatchEvent(inputEvent);
   }
 </script>
