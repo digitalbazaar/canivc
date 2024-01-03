@@ -7,7 +7,8 @@
       paginationData.forEach((suite) => {
         let matrices = suite.matrices;
         const matricesMapped = matrices.map((matrix) => {
-          matrix.reportName = suite.respecConfig.shortName;
+          matrix.reportDetails = suite.respecConfig;
+          matrix.reportDetails.title = suite.title;
           return matrix;
         });
         suites = suites.concat(matricesMapped);
@@ -20,9 +21,12 @@
     size: 1,
     alias: "matrix"
   },
-  permalink: "/reports/{{ matrix.reportName | slugify }}/suites/{{ matrix.title | slugify }}/"
+  permalink: "/reports/{{ matrix.reportDetails.shortName | slugify }}/suites/{{ matrix.title | slugify }}/"
 }
 ---
+
+# [{{ matrix.reportDetails.title }}](../../)
+
 <section id="{{ matrix.title }}">
   <h2>{{ matrix.title }}</h2>
   <div>
@@ -34,7 +38,7 @@
         </tr>
         <tr>
         {% for column in matrix.columns %}
-          <th>{{ column }}</th>
+          <th><a href="/implementations/{{ column | slugify }}">{{ column }}</a></th>
         {% endfor %}
         </tr>
       </thead>
@@ -47,7 +51,7 @@
           {% for cell in row.cells %}
             <td class="{{ cell.state | getStatusColors }} {{ cell.optional | getOptional }}">
               {% if cell.err %}
-              <div 
+              <div
                 data-tooltip="{{ cell.err.message }}"
                 style="
                   width: 100%;
@@ -60,7 +64,7 @@
                 <div>{{ cell.state | getStatusMark }}</div>
               </div>
               {% else %}
-              <div 
+              <div
                 style="
                   width: 100%;
                   display: flex;
