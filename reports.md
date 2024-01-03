@@ -6,7 +6,7 @@ pagination:
 permalink: "/reports/{{ report.respecConfig.shortName | slugify }}/"
 ---
 
-# {{ report.title }}
+## {{ report.title }}
 
 <pre>
 {%- for stat in report.stats %}
