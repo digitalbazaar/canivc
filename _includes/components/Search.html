@@ -4,11 +4,12 @@
   </div>
   <div>
     <div class="ui large input">
-      <input 
-        type="text" 
-        id="searchField" 
-        placeholder="did:key, data integrity..." 
-        style="min-width: 275px; margin-top: -4px" />
+      <input
+        type="text"
+        id="searchField"
+        placeholder="did:key, data integrity..."
+        style="min-width: 275px; margin-top: -4px"
+      />
     </div>
   </div>
   <div>
@@ -34,5 +35,23 @@
     searchInput.value = value;
     const inputEvent = new Event("input");
     searchInput.dispatchEvent(inputEvent);
+  }
+
+  // Fetch results with pagefind search api on input change
+  document.getElementById("searchField").addEventListener("input", searchApi);
+
+  // Example of utilizing pagefind search API
+  async function searchApi(event) {
+    const searchTerm = event.currentTarget.value;
+    const pagefind = await import("/pagefind/pagefind.js");
+    const search = await pagefind.debouncedSearch(searchTerm);
+    if (search !== null) {
+      const totalCount = search.results.length;
+      const fiveResults = await Promise.all(
+        search.results.slice(0, 5).map((r) => r.data())
+      );
+      console.log(`${totalCount} results for '${searchTerm}'`);
+      console.log("Top Results", fiveResults);
+    }
   }
 </script>
