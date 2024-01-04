@@ -3,10 +3,12 @@
     <p class="ui massive header inverted">Can I</p>
   </div>
   <div>
-    <div class="ui large input">
+    <div v-scope class="ui large input">
       <input
         type="text"
         id="searchField"
+        v-model="store.searchTerm"
+        @input="store.updateResults"
         placeholder="did:key, data integrity..."
         style="min-width: 275px; margin-top: -4px"
       />
@@ -22,36 +24,3 @@
     </button>
   </div>
 </div>
-
-<script>
-  // Trigger search by writing input to pagefind input
-  document.getElementById("searchField").addEventListener("input", getInput);
-
-  // Copy input into pagefind component
-  function getInput(event) {
-    const value = event.currentTarget.value;
-    const pagefindElements = document.getElementById("search");
-    const searchInput = pagefindElements.children[0].children[0].children[0];
-    searchInput.value = value;
-    const inputEvent = new Event("input");
-    searchInput.dispatchEvent(inputEvent);
-  }
-
-  // Fetch results with pagefind search api on input change
-  document.getElementById("searchField").addEventListener("input", searchApi);
-
-  // Example of utilizing pagefind search API
-  async function searchApi(event) {
-    const searchTerm = event.currentTarget.value;
-    const pagefind = await import("/pagefind/pagefind.js");
-    const search = await pagefind.debouncedSearch(searchTerm);
-    if (search !== null) {
-      const totalCount = search.results.length;
-      const fiveResults = await Promise.all(
-        search.results.slice(0, 5).map((r) => r.data())
-      );
-      console.log(`${totalCount} results for '${searchTerm}'`);
-      console.log("Top Results", fiveResults);
-    }
-  }
-</script>

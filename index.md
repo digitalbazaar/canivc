@@ -7,7 +7,15 @@ showHero: true
   </div>
 </div>
 
-{% include "components/SearchResults.html" %}
+<div 
+  v-scope
+  v-show="store.searchResults.length"
+  class="ui one column stackable grid"
+>
+  <div class="column">
+    {% include "components/SearchResults.html" %}
+  </div>
+</div>
 
 <div class="ui two column stackable grid">
 {% for items in homePage.blockList %}
