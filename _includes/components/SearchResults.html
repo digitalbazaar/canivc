@@ -4,23 +4,35 @@
       <div class="ui small black text" v-html="store.resultText"></div>
       <div class="ui divider"></div>
       <div
-        v-for="result in store.searchResults"
-        class="item"
-        style="padding: 24px"
+        v-for="result in store.searchResults.slice(0, store.paginationNumber)"
       >
-        <a
-          class="ui medium black text"
-          :href="result.url"
-          v-html="result.meta.title"
-        ></a>
-        <div
-          v-if="result.sub_results.length"
-          :href="result.url"
-          class="ui small black text"
-          v-html="result.sub_results[0].excerpt"
-        ></div>
+        <div class="item" style="padding: 24px">
+          <a
+            :href="result.url"
+            style="font-size: 1.5em"
+            v-html="result.meta.title"
+          ></a>
+          <div
+            v-if="result.sub_results.length"
+            :href="result.url"
+            class="ui small black text"
+            v-html="result.sub_results[0].excerpt"
+          ></div>
+        </div>
         <div class="ui divider"></div>
       </div>
+    </div>
+    <div
+      v-if="store.paginationNumber < store.searchResults.length"
+      class="column ui center aligned"
+    >
+      <button
+        style="width: 75%"
+        class="ui black basic button"
+        @click="store.showMoreResults"
+      >
+        Show More Results
+      </button>
     </div>
   </div>
 </div>
