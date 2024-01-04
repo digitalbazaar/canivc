@@ -1,53 +1,26 @@
-<link href="/pagefind/pagefind-ui.css" rel="stylesheet" />
-<script src="/pagefind/pagefind-ui.js"></script>
-
-<div class="ui one column stackable grid" id="search-container">
-  <div class="column">
-    <div class="ui very padded segment" style="padding-top: 1em">
-      <div id="search"></div>
+<div class="ui very padded segment">
+  <div class="ui one column stackable grid">
+    <div class="column">
+      <div class="ui small black text" v-html="store.resultText"></div>
+      <div class="ui divider"></div>
+      <div
+        v-for="result in store.searchResults"
+        class="item"
+        style="padding: 24px"
+      >
+        <a
+          class="ui medium black text"
+          :href="result.url"
+          v-html="result.meta.title"
+        ></a>
+        <div
+          v-if="result.sub_results.length"
+          :href="result.url"
+          class="ui small black text"
+          v-html="result.sub_results[0].excerpt"
+        ></div>
+        <div class="ui divider"></div>
+      </div>
     </div>
   </div>
 </div>
-
-<style>
-  #search-container {
-    display: none;
-  }
-  .pagefind-ui__form.svelte-e9gkc3::before {
-    display: none;
-  }
-  .pagefind-ui__search-input.svelte-e9gkc3 {
-    display: none;
-  }
-  .pagefind-ui__search-clear.svelte-e9gkc3 {
-    display: none;
-  }
-</style>
-
-<script>
-  // Add pagefind element to dom
-  window.addEventListener("DOMContentLoaded", (event) => {
-    new PagefindUI({
-      element: "#search",
-      showSubResults: true,
-      debounceTimeoutMs: 300,
-      translations: { placeholder: "" },
-      processResult: function (result) {
-        // Log results to inspect in dev console
-        // console.log(result);
-        return result;
-      },
-    });
-
-    const pagefindElements = document.getElementById("search");
-    const searchInput = pagefindElements.children[0].children[0].children[0];
-    searchInput.addEventListener("input", logData);
-
-    // Copy input into pagefind component
-    function logData(event) {
-      const container = document.getElementById("search-container");
-      const value = event.currentTarget.value;
-      container.style.display = value ? "block" : "none";
-    }
-  });
-</script>
