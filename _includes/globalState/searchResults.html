@@ -1,0 +1,34 @@
+<script type="module">
+  import { createApp, reactive } from "https://unpkg.com/petite-vue?module";
+
+  const store = reactive({
+    searchTerm: "",
+    searchResults: [],
+    loadingResults: false,
+    get resultText() {
+      return `${this.searchResults.length} results from '${this.searchTerm}'`;
+    },
+    toggleLoading() {
+      this.loadingResults = !this.loadingResults;
+    },
+    async updateResults() {
+      if (!this.loadingResults) {
+        this.toggleLoading();
+      }
+      const pagefind = await import("/pagefind/pagefind.js");
+      const search = await pagefind.debouncedSearch(this.searchTerm);
+      if (search !== null) {
+        this.searchResults = await Promise.all(
+          search.results.map((r) => r.data())
+        );
+        console.log(this.searchResults);
+        if (this.loadingResults) {
+          this.toggleLoading();
+        }
+      }
+    },
+  });
+
+  // Make global state available with app scopes
+  createApp({ store }).mount();
+</script>
