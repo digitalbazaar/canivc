@@ -19,6 +19,7 @@
       </div>
       <div class="ui container">
         {{ content }}
+        {% include "globalState/searchResults.html" %}
       </div>
       <div class="ui very padded vertical segment" style="margin-top: 3em">
         <div class="ui container">
@@ -28,5 +29,6 @@
     </main>
     {% mermaid_with_callback_js %}
     <script src="https://cdn.jsdelivr.net/npm/svg-pan-zoom@3/dist/svg-pan-zoom.min.js"></script>
+    <script src="https://unpkg.com/petite-vue@0.2.2/dist/petite-vue.iife.js" defer init></script>
   </body>
 </html>
