@@ -26,7 +26,6 @@
         this.searchResults = await Promise.all(
           search.results.map((r) => r.data())
         );
-        console.log(this.searchResults);
         if (this.loadingResults) {
           this.toggleLoading();
         }
