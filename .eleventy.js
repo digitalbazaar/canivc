@@ -58,6 +58,9 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("formatJSON", (data) => {
     return JSON.stringify(data, null, 2);
   });
+  eleventyConfig.addFilter("removeQuotes", (str) => {
+    return str && str.replaceAll('"', "'");
+  });
 
   eleventyConfig.addTemplateFormats("scss");
   // Creates the extension for use

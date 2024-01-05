@@ -51,7 +51,7 @@
           {% for cell in row.cells %}
             <td class="{{ cell.state | getStatusColors }} {{ cell.optional | getOptional }}">
             <!-- Add tooltip for errors -->
-              <div {% if cell.err %} data-tooltip="{{ cell.err.message }}" {% endif %}
+              <div {% if cell.err %} data-tooltip="{{ cell.err.message | removeQuotes }}" {% endif %}
                 style="
                   width: 100%;
                   display: flex;
