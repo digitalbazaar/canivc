@@ -3,12 +3,12 @@
     {{ listTitle }}
   </h2>
   <ol class="ui suffixed list">
-    {%- for item in itemList -%}
+    {%- for item in itemList limit:5 -%}
     <li class="item" style="line-height: 2em; margin-bottom: 4px">
       <div style="display: flex; align-items: center;">
-        {% BarRating item.passing item.total %}
+        {% BarRating item.passed item.pending item.failed item.total %}
         <p style="width: 60%; white-space: nowrap; text-overflow: ellipsis; overflow-x: hidden;">
-          <a href="{{ item.link }}" style="margin-left: 8px">{{ item.text }}</a>, {{ item.passing }} / {{ item.total }}
+          <a href="{{ item.link }}" style="margin-left: 8px">{{ item.text }}</a>, {{ item.passed }} / {{ item.total }}
         </p>
       </div>
     </li>

@@ -31,16 +31,22 @@ showHero: true
 </div>
 
 <div class="ui two column stackable grid">
-{% for items in homePage.scoreList %}
   <div class="column">
     {%
       include "components/ScoreList.html"
-        listTitle: items.listTitle
-        itemList: items.listItems
-        buttonText: items.buttonText
+        listTitle: "Issuer Scores"
+        buttonText: "View the scoreboard"
+        itemList: companyResultsByTestType.Issuer
     %}
   </div>
-{% endfor %}
+  <div class="column">
+    {%
+      include "components/ScoreList.html"
+        listTitle: "Verifier Scores"
+        buttonText: "View the scoreboard"
+        itemList: companyResultsByTestType.Verifier
+    %}
+  </div>
 </div>
 
 <div class="ui one column stackable grid">
