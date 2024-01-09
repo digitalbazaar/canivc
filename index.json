@@ -65,50 +65,6 @@
         "buttonText": "View all news",
         "buttonLink": "/"
       }
-    ],
-    "scoreList": [
-      {
-        "listTitle": "Client scores",
-        "listItems": [
-          {
-            "text": "Apple Mail (macOS)",
-            "link": "/",
-            "subtext": "245/262",
-            "total": 262,
-            "passing": 256
-          },
-          {
-            "text": "Apple Mail (iOS)",
-            "link": "/",
-            "subtext": "245/262",
-            "total": 262,
-            "passing": 245
-          },
-          {
-            "text": "Outlook (macOS)",
-            "link": "/",
-            "subtext": "232/262",
-            "total": 262,
-            "passing": 232
-          },
-          {
-            "text": "Samsung Email (Android)",
-            "link": "/",
-            "subtext": "222/262",
-            "total": 262,
-            "passing": 222
-          },
-          {
-            "text": "WEB.DE (iOS)",
-            "link": "/",
-            "subtext": "222/262",
-            "total": 262,
-            "passing": 222
-          }
-        ],
-        "buttonText": "View the scoreboard",
-        "buttonLink": "/"
-      }
     ]
   }
 }

@@ -2,24 +2,24 @@
 const colors = {
   passed: "#00b5ad", // green
   failed: "#db2828", // red
-  warning: "#fbbd08", // yellow
+  pending: "#fbbd08", // yellow
   background: "#767676" // gray
 };
 
 /**
  * BarRating component displays a bar of test statistics.
  *
- * @param {number} passing - Number of tests passed.
+ * @param {number} passed - Number of tests passed.
+ * @param {number} pending - Number of tests pending.
+ * @param {number} failed - Number of tests failed.
  * @param {number} total - Total number of tests.
  * @returns {string} BarRating component for ScoreList.
  */
-function BarRating(passing, total) {
-  // Percentage of test passed
-  const passed = Math.round(passing / total * 100);
-  // FIXME: Failed Placeholder
-  const failed = ((100 - passed) / 2) - 2 || 0;
-  // FIXME: Warning Placeholder
-  const warning = ((100 - passed) / 2) - 1 || 0;
+function BarRating(passed, pending, failed, total) {
+  // Percentage of test passed, pending, & failed
+  const passedWidth = Math.round(passed / total * 100);
+  const pendingWidth = Math.round(pending / total * 100);
+  const failedWidth = Math.round(failed / total * 100);
   return `
     <div 
       style="
@@ -33,20 +33,20 @@ function BarRating(passing, total) {
       <div 
         style="
           height: 2em; 
-          width: ${passed}%; 
+          width: ${passedWidth}%; 
           background-color: ${colors.passed};">
       </div>
       <div 
         style="
           height: 2em; 
-          width: ${failed}%; 
-          background-color: ${colors.failed};">
+          width: ${pendingWidth}%; 
+          background-color: ${colors.pending};">
       </div>
       <div 
         style="
           height: 2em; 
-          width: ${warning}%; 
-          background-color: ${colors.warning};">
+          width: ${failedWidth}%; 
+          background-color: ${colors.failed};">
       </div>
     </div>
   `;
