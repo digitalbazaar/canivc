@@ -13,8 +13,7 @@
         });
         suites = suites.concat(matricesMapped);
       });
-      // combine matricies into single array
-      // output suites
+      // combine matricies into single array and output suites
       return suites;
     },
     data: "results",
