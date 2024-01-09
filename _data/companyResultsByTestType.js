@@ -90,9 +90,7 @@ function extractCompanyResultsByTestType(results) {
 
       // Organize company data and sort by most tests passed
       allTestTypes[testType] = Object.keys(companyTotals).map(companyName => {
-        const defaultValues = {
-          link: "/", passed: 0, failed: 0, total: 0, pending: 0
-        };
+        const defaultValues = {passed: 0, failed: 0, total: 0, pending: 0};
         return {
           text: companyName,
           ...defaultValues,
