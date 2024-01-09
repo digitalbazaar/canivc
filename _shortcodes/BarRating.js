@@ -1,9 +1,9 @@
 // Colors pulled from Fomantic-UI's current theme
 const colors = {
-  passed: '#00b5ad', // green
-  failed: '#db2828', // red
-  warning: '#fbbd08', // yellow
-  background: '#767676' // gray
+  passed: "#00b5ad", // green
+  failed: "#db2828", // red
+  warning: "#fbbd08", // yellow
+  background: "#767676" // gray
 };
 
 /**
