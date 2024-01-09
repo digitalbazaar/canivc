@@ -56,7 +56,7 @@ module.exports = function (eleventyConfig) {
     return optional ? "optional" : "not-optional";
   });
   eleventyConfig.addFilter("formatJSON", (data) => {
-    return JSON.stringify(data, null, 2);
+    return JSON.stringify(data, null, "\n");
   });
   eleventyConfig.addFilter("removeQuotes", (str) => {
     return str && str.replaceAll('"', "'");
