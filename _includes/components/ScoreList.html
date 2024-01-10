@@ -3,18 +3,24 @@
     {{ listTitle }}
   </h2>
   <ol class="ui suffixed list">
-    {%- for item in itemList limit:5 -%}
+    {%- for item in itemList limit:limit -%}
     <li class="item" style="line-height: 2em; margin-bottom: 4px">
-      <div style="display: flex; align-items: center;">
+      <div style="display: flex; align-items: center; margin-left: 12px">
         {% BarRating item.passed item.pending item.failed item.total %}
         <p style="width: 60%; white-space: nowrap; text-overflow: ellipsis; overflow-x: hidden;">
-          <a href="implementations/{{ item.text | slugify }}" style="margin-left: 8px">{{ item.text }}</a>, {{ item.passed }} / {{ item.total }}
+          <a href="/implementations/{{ item.text | slugify }}" style="margin-left: 8px; font-size: 1.25em">
+            {{ item.text }}
+          </a>, {{ item.passed }} / {{ item.total }}
         </p>
       </div>
     </li>
     {%- endfor -%}
   </ol>
-  <button class="ui button">{{ buttonText }}</button>
+  {% if buttonText %}
+  <button class="ui button" onclick="location.href='{{ buttonLink }}'">
+    {{ buttonText }}
+  </button>
+  {% endif %}
 </div>
 
 
