@@ -34,7 +34,9 @@ showHero: true
   <div class="column">
     {%
       include "components/ScoreList.html"
-        listTitle: "Issuer Scores"
+        limit: 5
+        buttonLink: "/issuers"
+        listTitle: "Top Issuers"
         buttonText: "View the scoreboard"
         itemList: companyResultsByTestType.Issuer
     %}
@@ -42,7 +44,9 @@ showHero: true
   <div class="column">
     {%
       include "components/ScoreList.html"
-        listTitle: "Verifier Scores"
+        limit: 5
+        buttonLink: "/verifiers"
+        listTitle: "Top Verifiers"
         buttonText: "View the scoreboard"
         itemList: companyResultsByTestType.Verifier
     %}
