@@ -1,10 +1,25 @@
-<div class="ui secondary menu">
-  <a href="/" class="active item">Home</a>
-  <a href="/" class="item">Features</a>
-  <a href="/" class="item">News</a>
-  <a href="/" class="item ui small header">April 30, 2023 - April 30, 2023</a>
+<div id="navigation-container" class="ui secondary menu">
+  <a href="/" id="test" class="item">Home</a>
+  <a class="item">Features</a>
+  <a class="item">News</a>
+  <a class="item ui small header">April 30, 2023 - April 30, 2023</a>
   <div class="right item">
-    <a href="/issuers" class="item">Compare Issuers</a>
-    <a href="/verifiers" class="item">Compare Verifiers</a>
+    <a href="/issuers/" class="item">Compare Issuers</a>
+    <a href="/verifiers/" class="item">Compare Verifiers</a>
   </div>
 </div>
+
+<script>
+  // Set the active class for the anchors inside of the navigation container
+  const url = window.location.href;
+  const navigationContainer = document.getElementById("navigation-container");
+  const navigationItems = navigationContainer.getElementsByTagName("a");
+  // Loop through the anchors and add the active class to the current/clicked anchor
+  for (let i = 0; i < navigationItems.length; i++) {
+    const currentItem = navigationItems[i];
+    currentItem.className.replace(" active", "");
+    if (url === currentItem.href) {
+      currentItem.className += " active";
+    }
+  }
+</script>
