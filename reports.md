@@ -1,6 +1,6 @@
 ---
 pagination:
-  data: results
+  data: results.all
   size: 1
   alias: report
 permalink: "/reports/{{ report.respecConfig.shortName | slugify }}/"

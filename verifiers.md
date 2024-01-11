@@ -4,7 +4,7 @@
       include "components/ScoreList.html"
         limit: 100
         listTitle: "All Verifier Scores"
-        itemList: companyResultsByTestType.Verifier
+        itemList: results.companiesByTestType.Verifier
     %}
   </div>
 </div>
