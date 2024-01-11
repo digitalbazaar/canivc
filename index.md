@@ -38,7 +38,7 @@ showHero: true
         buttonLink: "/issuers"
         listTitle: "Top Issuers"
         buttonText: "View the scoreboard"
-        itemList: companyResultsByTestType.Issuer
+        itemList: results.companiesByTestType.Issuer
     %}
   </div>
   <div class="column">
@@ -48,7 +48,7 @@ showHero: true
         buttonLink: "/verifiers"
         listTitle: "Top Verifiers"
         buttonText: "View the scoreboard"
-        itemList: companyResultsByTestType.Verifier
+        itemList: results.companiesByTestType.Verifier
     %}
   </div>
 </div>

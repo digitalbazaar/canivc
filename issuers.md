@@ -4,7 +4,7 @@
       include "components/ScoreList.html"
         limit: 100
         listTitle: "All Issuer Scores"
-        itemList: companyResultsByTestType.Issuer
+        itemList: results.companiesByTestType.Issuer
     %}
   </div>
 </div>

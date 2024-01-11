@@ -16,7 +16,7 @@
       // combine matricies into single array and output suites
       return suites;
     },
-    data: "results",
+    data: "results.all",
     size: 1,
     alias: "matrix"
   },
