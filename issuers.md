@@ -1,3 +1,6 @@
+---
+title: Issuers
+---
 <div class="ui one column stackable grid">
   <div class="column">
     {%
