@@ -11,15 +11,5 @@
 
 <script>
   // Set the active class for the anchors inside of the navigation container
-  const url = window.location.href;
-  const navigationContainer = document.getElementById("navigation-container");
-  const navigationItems = navigationContainer.getElementsByTagName("a");
-  // Loop through the anchors and add the active class to the current/clicked anchor
-  for (let i = 0; i < navigationItems.length; i++) {
-    const currentItem = navigationItems[i];
-    currentItem.className.replace(" active", "");
-    if (url === currentItem.href) {
-      currentItem.className += " active";
-    }
-  }
+  document.querySelector(`a[href="${window.location.pathname}"]`).classList.add("active");
 </script>
