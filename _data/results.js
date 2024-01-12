@@ -1,33 +1,7 @@
 const EleventyFetch = require("@11ty/eleventy-fetch");
 
-// Repeated fetch, FIXME: merge this with the results.js fetch
-module.exports = async function() {
-  const urls = [
-    "https://w3c.github.io/vc-di-eddsa-test-suite/index.json",
-    "https://w3c.github.io/vc-di-ecdsa-test-suite/index.json",
-    "https://w3c.github.io/vc-di-ed25519signature2020-test-suite/index.json",
-    "https://w3c-ccg.github.io/did-key-test-suite/index.json",
-    "https://w3c-ccg.github.io/status-list-2021-test-suite/index.json",
-    "https://w3c-ccg.github.io/vc-api-issuer-test-suite/index.json",
-  ];
-
-  /* This returns a promise */
-  const promises = urls.map(url =>
-    EleventyFetch(url, {
-      duration: "1w", // save for 1 week
-      type: "json", // we’ll parse JSON for you
-    })
-  );
-
-  const results = await Promise.all(promises);
-
-  const companiesByTestType = extractCompanyResultsByTestType(results);
-
-  return {all: results, companiesByTestType};
-};
-
 // Organize data into company test results by test type
-function extractCompanyResultsByTestType(results) {
+const extractCompanyResultsByTestType = results => {
   // Helper function: Extract all test results for each test
   const getTestResults = (all, currentSuite) => {
     const {title, tests} = currentSuite;
@@ -103,4 +77,31 @@ function extractCompanyResultsByTestType(results) {
   );
 
   return companyResultsByTestType;
-}
+};
+
+// Repeated fetch
+module.exports = async function() {
+  const urls = [
+    "https://w3c.github.io/vc-di-eddsa-test-suite/index.json",
+    "https://w3c.github.io/vc-di-ecdsa-test-suite/index.json",
+    "https://w3c.github.io/vc-di-ed25519signature2020-test-suite/index.json",
+    "https://w3c-ccg.github.io/did-key-test-suite/index.json",
+    "https://w3c-ccg.github.io/status-list-2021-test-suite/index.json",
+    "https://w3c-ccg.github.io/vc-api-issuer-test-suite/index.json",
+  ];
+
+  /* This returns a promise */
+  const promises = urls.map(url =>
+    EleventyFetch(url, {
+      duration: "1w", // save for 1 week
+      type: "json", // we’ll parse JSON for you
+    })
+  );
+
+  const results = await Promise.all(promises);
+
+  const companiesByTestType = extractCompanyResultsByTestType(results);
+
+  return {all: results, companiesByTestType};
+};
+
