@@ -1,5 +1,8 @@
 const EleventyFetch = require("@11ty/eleventy-fetch");
 
+// Constants
+const BASE_URL = "http://localhost:8080";
+
 // Organize data into company test results by test type
 const extractCompanyResultsByTestType = results => {
   // Helper function: Extract all test results for each test
@@ -79,6 +82,33 @@ const extractCompanyResultsByTestType = results => {
   return companyResultsByTestType;
 };
 
+// Organize data into company names containing tests
+const extractTestsByCompany = results => {
+  // Consolidate all tests
+  results = results.flatMap(result => {
+    const shortName = result.respecConfig.shortName;
+    return result.matrices.map(test => ({...test, shortName}));
+  });
+
+  // Organize all tests by company name
+  const companies = results.reduce((all, current) => {
+    const {columnLabel, title, shortName} = current;
+    const url = `${BASE_URL}/reports/${shortName}/suites`;
+    const link = {label: title, url};
+    current.columns.forEach(companyName => {
+      if(!all[companyName]?.[columnLabel]) {
+        all[companyName] = {...all[companyName], [columnLabel]: [link]};
+      } else {
+        all[companyName][columnLabel].push(link);
+      }
+    });
+    return all;
+  }, {});
+
+  console.log(JSON.stringify(companies, null, 2));
+  return companies;
+};
+
 // Repeated fetch
 module.exports = async function() {
   const urls = [
@@ -100,8 +130,10 @@ module.exports = async function() {
 
   const results = await Promise.all(promises);
 
-  const companiesByTestType = extractCompanyResultsByTestType(results);
-
-  return {all: results, companiesByTestType};
+  return {
+    all: results,
+    testsByCompany: extractTestsByCompany(results),
+    companiesByTestType: extractCompanyResultsByTestType(results),
+  };
 };
 
