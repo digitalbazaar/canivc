@@ -58,6 +58,9 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("formatJSON", (data) => {
     return JSON.stringify(data, null, "\n");
   });
+  eleventyConfig.addFilter("findObjectByProperty", (data, prop, value) => { 
+    return data ? data.find(item => item[prop] === value) : {};
+  });
   eleventyConfig.addFilter("removeQuotes", (str) => {
     return str && str.replaceAll('"', "'");
   });
