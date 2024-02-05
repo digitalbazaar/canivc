@@ -2,41 +2,30 @@
 pagination:
   data: implementations
   size: 1
-  alias: implementation
-permalink: "/implementations/{{ implementation | slugify }}"
+  alias: vendor
+permalink: "/implementations/{{ vendor | slugify }}"
 ---
 
-{% assign imp = implementations[implementation].settings %}
-# {{ implementation }} - {{ imp.implementation }}
+{% assign info = implementations[vendor] %}
+{% assign testCategories = results.testsByCompany[vendor] %}
+<h1 style="text-align: center">{{ vendor }}</h1>
 
-## Support
-
-{% if imp.issuers %}
-### Issuers
-{% for issuer in imp.issuers %}
-`{{ issuer.endpoint }}`
-<div class="ui tiny labels">{% for tag in issuer.tags %}<span class="ui tag label">{{ tag }}</span>{% endfor %}</div>
-
----
+{% for testCategory in testCategories %}
+<div class="ui very padded segment">
+  <h2 style="border-bottom: 2px solid gray; width: fit-content">
+    {{ testCategory[0] }}
+  </h2>
+  <!-- Test Results -->
+  {% assign issuerResults = results.companiesByTestType[testCategory[0]] | findObjectByProperty: "text", vendor %}
+  {% BarRating issuerResults.passed issuerResults.pending issuerResults.failed issuerResults.total %}
+  <!-- Tags -->
+  {% for link in testCategory[1] -%}
+  <button
+    style="margin-top: 0.25em"
+    onclick='location.href="{{link.url}}/{{ link.label | slugify }}"'
+    class="tiny ui inverted secondary button">
+      {{ link.label }}
+  </button>
+  {% endfor -%}
+</div>
 {% endfor %}
-{% endif %}
-
-{% if imp.verifiers %}
-### Verifiers
-{% for verifier in imp.verifiers %}
-`{{ verifier.endpoint }}`
-<div class="ui tiny labels">{% for tag in verifier.tags %}<span class="ui tag label">{{ tag }}</span>{% endfor %}</div>
-
----
-{% endfor %}
-{% endif %}
-
-{% if imp.vpVerifiers %}
-### Verifiable Presentation Verifiers
-{% for verifier in imp.vpVerifiers %}
-`{{ vpVerifier.endpoint }}`
-<div class="ui tiny labels">{% for tag in verifier.tags %}<span class="ui tag label">{{ tag }}</span>{% endfor %}</div>
-
----
-{% endfor %}
-{% endif %}
