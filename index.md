@@ -16,7 +16,7 @@ showHero: true
     {% include "components/SearchResults.html" %}
   </div>
 </div>
-
+<!---
 <div class="ui two column stackable grid">
 {% for items in homePage.blockList %}
   <div class="column">
@@ -29,7 +29,7 @@ showHero: true
   </div>
 {% endfor %}
 </div>
-
+--->
 <div class="ui two column stackable grid">
   <div class="column">
     {%
@@ -53,8 +53,10 @@ showHero: true
   </div>
 </div>
 
+<!---
 <div class="ui one column stackable grid">
   <div class="column">
     {% include "components/TestSuiteList.html" %}
   </div>
 </div>
+-->
