@@ -1,6 +1,6 @@
 // Colors pulled from Fomantic-UI's current theme
 const colors = {
-  passed: "#00b5ad", // green
+  passed: "#00b5ad", // teal
   failed: "#db2828", // red
   pending: "#fbbd08", // yellow
   background: "#767676" // gray
@@ -13,9 +13,12 @@ const colors = {
  * @param {number} pending - Number of tests pending.
  * @param {number} failed - Number of tests failed.
  * @param {number} total - Total number of tests.
+ * @param {string} width - Width of component, defaults to 40%.
  * @returns {string} BarRating component for ScoreList.
  */
-function BarRating(passed, pending, failed, total) {
+function BarRating(passed, pending, failed, total, width) {
+  // Style
+  const componentWidth = width ? `${width}` : "40%";
   // Percentage of test passed, pending, & failed
   const passedWidth = Math.round(passed / total * 100);
   const pendingWidth = Math.round(pending / total * 100);
@@ -23,11 +26,12 @@ function BarRating(passed, pending, failed, total) {
   return `
     <div 
       style="
-        width: 40%;
         height: 2em; 
         display: flex; 
         overflow-x: auto;
+        max-width: 375px;
         border-radius: 3px;
+        width: ${componentWidth};
         background-color: ${colors.background};"
     >
       <div 

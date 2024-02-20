@@ -17,7 +17,36 @@ permalink: "/implementations/{{ vendor | slugify }}"
   </h2>
   <!-- Test Results -->
   {% assign issuerResults = results.companiesByTestType[testCategory[0]] | findObjectByProperty: "text", vendor %}
-  {% BarRating issuerResults.passed issuerResults.pending issuerResults.failed issuerResults.total %}
+  {% BarRating issuerResults.passed issuerResults.pending issuerResults.failed issuerResults.total "100%" %}
+  <div class="ui mini horizontal divided list">
+    <div class="item">
+      <i class="stop icon item teal"></i>
+      <div class="content">
+        Passing: {{ issuerResults.passed }}
+      </div>
+    </div>
+    <div class="item">
+      <i class="stop icon item yellow"></i>
+      <div class="content">
+        Pending: {{ issuerResults.pending }}
+      </div>
+    </div>
+    <div class="item">
+      <i class="stop icon item red"></i>
+      <div class="content">
+        Failed: {{ issuerResults.failed }}
+      </div>
+    </div>
+    <div class="item">
+      <i class="stop icon item grey"></i>
+      <div class="content">
+        Total: {{ issuerResults.total }}
+      </div>
+    </div>
+  </div>
+  <div class="ui horizontal divider header">
+    <span class="ui small grey italic text">Test Result Links</span>
+  </div>
   <!-- Tags -->
   {% for link in testCategory[1] -%}
   <button

@@ -105,7 +105,6 @@ const extractTestsByCompany = results => {
     return all;
   }, {});
 
-  console.log(JSON.stringify(companies, null, 2));
   return companies;
 };
 
