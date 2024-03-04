@@ -13,5 +13,7 @@
 
 <script>
   // Set the active class for the anchors inside of the navigation container
-  document.querySelector(`a[href="${window.location.pathname}"]`).classList.add("active");
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelector(`a[href="${window.location.pathname}"]`).classList.add("active");
+  })
 </script>
