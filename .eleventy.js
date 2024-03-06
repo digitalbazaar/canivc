@@ -51,6 +51,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("getStatusMark", (status) => statusMarks[status]);
   eleventyConfig.addFilter("getStatusLabel", (status) => statusLabel[status]);
   eleventyConfig.addFilter("getStatusColors", (status) => statusColors[status]);
+  eleventyConfig.addFilter("getPercentages", (value) => JSON.stringify(Object.values(value)));
   eleventyConfig.addFilter("getOptional", (optional) => {
     return optional ? "optional" : "not-optional";
   });

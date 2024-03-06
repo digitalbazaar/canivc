@@ -44,10 +44,24 @@ permalink: "/implementations/{{ vendor | slugify }}"
       </div>
     </div>
   </div>
+  
+  <!-- Spider Chart -->
+  <div class="ui one column centered grid">
+    <div class="column">
+    {% assign chartValues = results.vendorChartData.vendorResults[vendor][testCategory[0]] | getPercentages %}
+    {% assign chartLabels = results.vendorChartData.labels[testCategory[0]] %}
+    <canvas
+      class="spider-chart"
+      style="max-height: 500px"
+      data-chart-values='{{chartValues}}' 
+      data-chart-labels='{{chartLabels}}'></canvas>
+    </div>
+  </div>
+  <!-- Divider -->
   <div class="ui horizontal divider header">
     <span class="ui small grey italic text">Test Result Links</span>
   </div>
-  <!-- Tags -->
+  <!-- Links -->
   {% for link in testCategory[1] -%}
   <button
     style="margin-top: 0.25em"
