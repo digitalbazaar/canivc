@@ -6,10 +6,10 @@
     </summary>
     <div class="content">
       <ul>
-        {% for report in results %}
+        {% for report in results.all %}
         <li>
           <a href="/reports/{{ report.respecConfig.shortName | slugify }}">
-            {{ report.respecConfig.subtitle }}
+            {{ report.respecConfig.title }}
           </a>
         </li>
         <ul>
