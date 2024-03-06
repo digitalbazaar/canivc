@@ -24,32 +24,32 @@ function BarRating(passed, pending, failed, total, width) {
   const pendingWidth = Math.round(pending / total * 100);
   const failedWidth = Math.round(failed / total * 100);
   return `
-    <div 
+    <div
       style="
-        height: 2em; 
-        display: flex; 
+        height: 2em;
+        display: flex;
         overflow-x: auto;
         max-width: 375px;
         border-radius: 3px;
         width: ${componentWidth};
         background-color: ${colors.background};"
     >
-      <div 
+      <div
         style="
-          height: 2em; 
-          width: ${passedWidth}%; 
+          height: 2em;
+          width: ${passedWidth}%;
           background-color: ${colors.passed};">
       </div>
-      <div 
+      <div
         style="
-          height: 2em; 
-          width: ${pendingWidth}%; 
+          height: 2em;
+          width: ${pendingWidth}%;
           background-color: ${colors.pending};">
       </div>
-      <div 
+      <div
         style="
-          height: 2em; 
-          width: ${failedWidth}%; 
+          height: 2em;
+          width: ${failedWidth}%;
           background-color: ${colors.failed};">
       </div>
     </div>
