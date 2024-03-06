@@ -11,6 +11,8 @@ permalink: "/implementations/{{ vendor | slugify }}"
 <h1 style="text-align: center">{{ vendor }}</h1>
 
 {% for testCategory in testCategories %}
+<!-- Only showing issuer and verifier statistics -->
+{% if testCategory[0] == "Issuer" or testCategory[0] == "Verifier"  %}
 <div class="ui very padded segment">
   <h2 style="border-bottom: 2px solid gray; width: fit-content">
     {{ testCategory[0] }}
@@ -44,7 +46,6 @@ permalink: "/implementations/{{ vendor | slugify }}"
       </div>
     </div>
   </div>
-  
   <!-- Spider Chart -->
   <div class="ui one column centered grid">
     <div class="column">
@@ -52,7 +53,7 @@ permalink: "/implementations/{{ vendor | slugify }}"
     {% assign chartLabels = results.vendorChartData.labels[testCategory[0]] %}
     <canvas
       class="spider-chart"
-      style="max-height: 500px"
+      style="max-height: 400px"
       data-chart-values='{{chartValues}}' 
       data-chart-labels='{{chartLabels}}'></canvas>
     </div>
@@ -71,4 +72,5 @@ permalink: "/implementations/{{ vendor | slugify }}"
   </button>
   {% endfor -%}
 </div>
+{% endif %}
 {% endfor %}
