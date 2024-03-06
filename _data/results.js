@@ -94,17 +94,16 @@ const extractTestsByCompany = results => {
   const companies = results.reduce((all, current) => {
     const {columnLabel, title, shortName} = current;
     const url = `${BASE_URL}/reports/${shortName}/suites`;
-    const link = {label: title, url};
+    const labelAndLink = {label: title, url};
     current.columns.forEach(companyName => {
       if(!all[companyName]?.[columnLabel]) {
-        all[companyName] = {...all[companyName], [columnLabel]: [link]};
+        all[companyName] = {...all[companyName], [columnLabel]: [labelAndLink]};
       } else {
-        all[companyName][columnLabel].push(link);
+        all[companyName][columnLabel].push(labelAndLink);
       }
     });
     return all;
   }, {});
-
   return companies;
 };
 
@@ -115,6 +114,84 @@ const collectSpecListByGroup = results => {
     return rv;
   });
 };
+
+// Company names containing tests passed in percentages and test names
+const getSpiderResults = results => {
+  const testTitlesByType = {};
+  // Iterate through matrices to organize test titles by type
+  results.forEach(result => {
+    result.matrices.forEach(m => {
+      const type = m.columnLabel;
+      testTitlesByType[type] = testTitlesByType[type] ?
+        [...testTitlesByType[type], m.title] : [m.title];
+    });
+  });
+  // Create structure for each vendor to organize their passing percentage
+  const vendorStructure = Object.keys(testTitlesByType).reduce((all, key) => ({
+    ...all,
+    [key]: testTitlesByType[key].sort((a, b) => a.localeCompare(b))
+      .reduce((all, title) => {
+        return ({...all, [title]: null});
+      }, {})
+  }), {});
+  // Sort and stringify list of titles to pass as prop to canvas element
+  const labels = Object.keys(testTitlesByType).reduce((all, key) => ({
+    ...all, [key]: JSON.stringify(
+      testTitlesByType[key].sort((a, b) => a.localeCompare(b))
+    )
+  }), {});
+  // Test types and passing percentages by vendor names
+  const vendorResults = {};
+  results.forEach(result => {
+    result.matrices.forEach(matrix => {
+      const testName = matrix.title;
+      const type = matrix.columnLabel;
+      matrix.suites.forEach(suite => {
+        const vendor = removeVendorNameSuffix(suite.title);
+        const passed = suite.tests
+          .filter(test => test.state === "passed").length;
+        const total = suite.tests.length;
+        const percentage = Math.round((passed / total) * 100);
+        if(!vendorResults[vendor]) {
+          vendorResults[vendor] = JSON.parse(JSON.stringify(vendorStructure));
+        }
+        vendorResults[vendor][type][testName] = percentage;
+      });
+    });
+  });
+  return {labels, vendorResults};
+};
+
+/**
+ * Removes P-256 & P-384 vendor name extension.
+ *
+ * @param {string} vendorName - Example: Digital Bazaar: P-256.
+ * @returns {string} Returns vendor name example: Digital Bazaar.
+ */
+function removeVendorNameSuffix(vendorName) {
+  // Remove P-256 & P-384 vendor name extension
+  const endIdx = vendorName.indexOf(": P-") > -1 ?
+    vendorName.indexOf(": P-") : vendorName.length;
+  return vendorName.slice(0, endIdx);
+}
+
+/**
+ * Removes the "interop" matrices because they have no "suites" (columns)
+ * and their rows are structured differently than all other matrices.
+ *
+ * @param {Array} results - Results from urls.
+ * @returns {Array} Results without interop matrices.
+ */
+function removeInteropTestResults(results) {
+  const curatedResults = results.map(result => ({
+    ...result,
+    matrices: result.matrices.filter(matrix => {
+      const testName = matrix.title.toLowerCase();
+      return !testName.includes("interop");
+    })
+  }));
+  return curatedResults;
+}
 
 // Repeated fetch
 module.exports = async function() {
@@ -135,13 +212,16 @@ module.exports = async function() {
     })
   );
 
-  const results = await Promise.all(promises);
+  let results = await Promise.all(promises);
+
+  /* Temporarily remove interop matrices */
+  results = removeInteropTestResults(results);
 
   return {
     all: results,
+    vendorChartData: getSpiderResults(results),
     testsByCompany: extractTestsByCompany(results),
     companiesByTestType: extractCompanyResultsByTestType(results),
     specsByGroup: collectSpecListByGroup(results)
   };
 };
-
