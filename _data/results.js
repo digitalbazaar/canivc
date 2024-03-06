@@ -85,17 +85,17 @@ const extractCompanyResultsByTestType = results => {
 // Organize data into company names containing tests
 const extractTestsByCompany = results => {
   // Consolidate all tests
-  results = results.flatMap(result => {
+  const allTests = results.flatMap(result => {
     const shortName = result.respecConfig.shortName;
     return result.matrices.map(test => ({...test, shortName}));
   });
-
   // Organize all tests by company name
-  const companies = results.reduce((all, current) => {
+  const companies = allTests.reduce((all, current) => {
     const {columnLabel, title, shortName} = current;
     const url = `${BASE_URL}/reports/${shortName}/suites`;
     const labelAndLink = {label: title, url};
     current.columns.forEach(companyName => {
+      companyName = removeVendorNameSuffix(companyName);
       if(!all[companyName]?.[columnLabel]) {
         all[companyName] = {...all[companyName], [columnLabel]: [labelAndLink]};
       } else {
