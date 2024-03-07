@@ -1,7 +1,5 @@
 <div class="ui very padded segment">
-  <h2 style="border-bottom: 2px solid gray; width: fit-content">
-    {{ listTitle }}
-  </h2>
+  <h2>{{ listTitle }}</h2>
   <ol class="ui suffixed list">
     {%- for item in itemList limit:limit -%}
     <li class="item" style="line-height: 2em; margin-bottom: 4px">
@@ -22,5 +20,3 @@
   </button>
   {% endif %}
 </div>
-
-
