@@ -17,6 +17,16 @@
         {% include "components/Header.html" %}
       </div>
       <div class="ui container">
+        {% if breadcrumbs %}
+        <div class="ui breadcrumb">
+          {% for b in breadcrumbs %}
+          <a class="section" href="{{ b.href }}">{{ b.title }}</a>
+          {% unless forloop.last %}
+          <i class="right angle icon divider"></i>
+          {% endunless %}
+          {% endfor %}
+        </div>
+        {% endif %}
         {{ content }}
       </div>
       <div class="ui very padded vertical segment" style="margin-top: 3em">

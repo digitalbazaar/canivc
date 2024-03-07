@@ -4,6 +4,9 @@ pagination:
   size: 1
   alias: report
 permalink: "/reports/{{ report.respecConfig.shortName | slugify }}/"
+breadcrumbs:
+  - href: /reports/
+    title: Reports
 ---
 
 ## {{ report.title }}
