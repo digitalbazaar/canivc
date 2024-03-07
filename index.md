@@ -7,7 +7,7 @@ showHero: true
   </div>
 </div>
 
-<div 
+<div
   v-scope
   v-show="store.searchResults.length"
   class="ui one column stackable grid"
@@ -30,7 +30,42 @@ showHero: true
 {% endfor %}
 </div>
 --->
+
 <div class="ui two column stackable grid">
+  <div class="column">
+    <div class="ui segment">
+      <h3 class="ui title">
+        VC WG Test Suites
+      </h3>
+      <ul>
+          {% assign wg_specs = results.specsByGroup | where: 'group', 'w3c' %}
+        {% for report in wg_specs %}
+        <li>
+          <a href="/reports/{{ report.shortName | slugify }}">
+            {{ report.title }}
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div class="column">
+    <div class="ui segment">
+      <h3 class="ui title">
+        CCG Test Suites
+      </h3>
+      <ul>
+          {% assign wg_specs = results.specsByGroup | where: 'group', 'w3c-ccg' %}
+        {% for report in wg_specs %}
+        <li>
+          <a href="/reports/{{ report.shortName | slugify }}">
+            {{ report.title }}
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
   <div class="column">
     {%
       include "components/ScoreList.html"
@@ -53,7 +88,7 @@ showHero: true
   </div>
 </div>
 
-<!---
+<!--
 <div class="ui one column stackable grid">
   <div class="column">
     {% include "components/TestSuiteList.html" %}

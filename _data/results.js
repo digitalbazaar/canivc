@@ -108,6 +108,14 @@ const extractTestsByCompany = results => {
   return companies;
 };
 
+const collectSpecListByGroup = results => {
+  return results.flatMap(result => {
+    const rv = result.respecConfig;
+    rv.group = rv.github.split("/")[3];
+    return rv;
+  });
+};
+
 // Repeated fetch
 module.exports = async function() {
   const urls = [
@@ -133,6 +141,7 @@ module.exports = async function() {
     all: results,
     testsByCompany: extractTestsByCompany(results),
     companiesByTestType: extractCompanyResultsByTestType(results),
+    specsByGroup: collectSpecListByGroup(results)
   };
 };
 
