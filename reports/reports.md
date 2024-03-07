@@ -21,6 +21,8 @@ breadcrumbs:
   </pre>
 </div>
 
-{% for matrix in report.matrices %}
-<li><a href="suites/{{ matrix.title | slugify }}">{{ matrix.title }}</a></li>
-{% endfor %}
+<div class="ui bulleted list">
+{%- for matrix in report.matrices -%}
+  <a class="item" href="suites/{{ matrix.title | slugify }}">{{ matrix.title }}</a>
+{%- endfor -%}
+</div>

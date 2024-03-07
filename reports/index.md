@@ -4,6 +4,8 @@ title: Reports
 
 ## Reports
 
-{% for report in results.all %}
-<li><a href="{{ report.respecConfig.shortName | slugify }}">{{ report.respecConfig.title }}</a></li>
-{% endfor %}
+<div class="ui bulleted list">
+{%- for report in results.all -%}
+  <a class="item" href="{{ report.respecConfig.shortName | slugify }}">{{ report.respecConfig.title }}</a>
+{%- endfor -%}
+</div>
