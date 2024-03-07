@@ -9,7 +9,24 @@ breadcrumbs:
     title: Reports
 ---
 
-## {{ report.title }}
+{% assign meta = report.respecConfig %}
+
+<div class="ui header">
+  {{ report.title }}
+  <div class="ui sub header">
+    {{ meta.subtitle }}
+  </div>
+</div>
+
+<a class="ui small labeled icon button" href="{{ meta.github }}">
+  <i class="github icon"></i>
+  {{ meta.github }}
+</a>
+
+<a class="ui small labeled icon button" href="{{ meta.edDraftURI }}">
+  <i class="clipboard outline icon"></i>
+  {{ meta.edDraftURI }}
+</a>
 
 <pre>
 {%- for stat in report.stats %}
