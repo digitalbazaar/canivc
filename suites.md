@@ -36,7 +36,8 @@
 }
 ---
 
-{% include "components/ReportDetails.html" details: matrix.reportDetails %}
+{% include "components/ReportDetails.html"
+    details: matrix.reportDetails %}
 
 <h2>{{ matrix.title }}</h2>
 

@@ -9,7 +9,9 @@ breadcrumbs:
     title: Reports
 ---
 
-{% include "components/ReportDetails.html" details: report.respecConfig %}
+{% include "components/ReportDetails.html"
+    details: report.respecConfig
+    showLinks: true %}
 
 <div class="ui right floated card">
   <pre class="content">
