@@ -37,16 +37,14 @@ showHero: true
       <h3 class="ui title">
         VC WG Test Suites
       </h3>
-      <ul>
-          {% assign wg_specs = results.specsByGroup | where: 'group', 'w3c' %}
-        {% for report in wg_specs %}
-        <li>
-          <a href="/reports/{{ report.shortName | slugify }}">
-            {{ report.title }}
-          </a>
-        </li>
-        {% endfor %}
-      </ul>
+      <div class="ui bulleted list">
+        {%- assign wg_specs = results.specsByGroup | where: 'group', 'w3c' -%}
+        {%- for report in wg_specs -%}
+        <a class="item" href="/reports/{{ report.shortName | slugify }}">
+          {{ report.title }}
+        </a>
+        {%- endfor -%}
+      </div>
     </div>
   </div>
   <div class="column">
@@ -54,16 +52,14 @@ showHero: true
       <h3 class="ui title">
         CCG Test Suites
       </h3>
-      <ul>
-          {% assign wg_specs = results.specsByGroup | where: 'group', 'w3c-ccg' %}
-        {% for report in wg_specs %}
-        <li>
-          <a href="/reports/{{ report.shortName | slugify }}">
-            {{ report.title }}
-          </a>
-        </li>
-        {% endfor %}
-      </ul>
+      <div class="ui bulleted list">
+        {%- assign wg_specs = results.specsByGroup | where: 'group', 'w3c-ccg' -%}
+        {%- for report in wg_specs -%}
+        <a class="item" href="/reports/{{ report.shortName | slugify }}">
+          {{ report.title }}
+        </a>
+        {%- endfor -%}
+      </div>
     </div>
   </div>
   <div class="column">
