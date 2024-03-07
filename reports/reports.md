@@ -28,11 +28,13 @@ breadcrumbs:
   {{ meta.edDraftURI }}
 </a>
 
-<pre>
-{%- for stat in report.stats %}
-{{ stat }}
-{%- endfor -%}
-</pre>
+<div class="ui right floated card">
+  <pre class="content">
+    {%- for stat in report.stats %}
+    {{ stat }}
+    {%- endfor -%}
+  </pre>
+</div>
 
 {% for matrix in report.matrices %}
 <li><a href="suites/{{ matrix.title | slugify }}">{{ matrix.title }}</a></li>
