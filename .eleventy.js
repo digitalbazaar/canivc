@@ -64,6 +64,12 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("removeQuotes", (str) => {
     return str && str.replaceAll('"', "'");
   });
+  eleventyConfig.addFilter("removeSuffix", (str) => {
+    // Remove P-256 & P-384 vendor name extension
+    const endIdx = str.indexOf(": P-") > -1 ?
+    str.indexOf(": P-") : str.length;
+    return str.slice(0, endIdx);
+  });
 
   eleventyConfig.addPassthroughCopy("assets/");
   eleventyConfig.addPassthroughCopy("**/*.jpg");

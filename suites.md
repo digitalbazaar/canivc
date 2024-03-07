@@ -37,7 +37,7 @@
         </tr>
         <tr>
         {% for column in matrix.columns %}
-          <th><a href="/implementations/{{ column | slugify }}">{{ column }}</a></th>
+          <th><a href="/implementations/{{ column | removeSuffix | slugify  }}">{{ column }}</a></th>
         {% endfor %}
         </tr>
       </thead>
