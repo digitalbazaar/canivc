@@ -6,6 +6,8 @@ title: Reports
 
 <div class="ui bulleted list">
 {%- for report in results.all -%}
-  <a class="item" href="{{ report.respecConfig.shortName | slugify }}">{{ report.respecConfig.title }}</a>
+  <div class="item">
+    <a href="{{ report.respecConfig.shortName | slugify }}">{{ report.respecConfig.title }}</a>
+  </div>
 {%- endfor -%}
 </div>

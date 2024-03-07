@@ -40,9 +40,11 @@ showHero: true
       <div class="ui bulleted list">
         {%- assign wg_specs = results.specsByGroup | where: 'group', 'w3c' -%}
         {%- for report in wg_specs -%}
-        <a class="item" href="/reports/{{ report.shortName | slugify }}">
-          {{ report.title }}
-        </a>
+        <div class="item">
+          <a href="/reports/{{ report.shortName | slugify }}">
+            {{ report.title }}
+          </a>
+        </div>
         {%- endfor -%}
       </div>
     </div>
@@ -55,9 +57,11 @@ showHero: true
       <div class="ui bulleted list">
         {%- assign wg_specs = results.specsByGroup | where: 'group', 'w3c-ccg' -%}
         {%- for report in wg_specs -%}
-        <a class="item" href="/reports/{{ report.shortName | slugify }}">
-          {{ report.title }}
-        </a>
+        <div class="item">
+          <a href="/reports/{{ report.shortName | slugify }}">
+            {{ report.title }}
+          </a>
+        </div>
         {%- endfor -%}
       </div>
     </div>
