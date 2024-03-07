@@ -9,24 +9,7 @@ breadcrumbs:
     title: Reports
 ---
 
-{% assign meta = report.respecConfig %}
-
-<div class="ui header">
-  {{ report.title }}
-  <div class="ui sub header">
-    {{ meta.subtitle }}
-  </div>
-</div>
-
-<a class="ui small labeled icon button" href="{{ meta.github }}">
-  <i class="github icon"></i>
-  {{ meta.github }}
-</a>
-
-<a class="ui small labeled icon button" href="{{ meta.edDraftURI }}">
-  <i class="clipboard outline icon"></i>
-  {{ meta.edDraftURI }}
-</a>
+{% include "components/ReportDetails.html" details: report.respecConfig %}
 
 <div class="ui right floated card">
   <pre class="content">

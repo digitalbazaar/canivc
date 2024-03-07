@@ -20,14 +20,27 @@
     size: 1,
     alias: "matrix"
   },
-  permalink: "/reports/{{ matrix.reportDetails.shortName | slugify }}/suites/{{ matrix.title | slugify }}/"
+  permalink: "/reports/{{ matrix.reportDetails.shortName | slugify }}/suites/{{ matrix.title | slugify }}/",
+  eleventyComputed: {
+    breadcrumbs: [
+      {
+        href: "/reports/",
+        title: "Reports"
+      },
+      {
+        href: "/reports/{{ matrix.reportDetails.shortName | slugify }}/",
+        title: "{{ matrix.reportDetails.title }}"
+      }
+    ]
+  }
 }
 ---
 
-# [{{ matrix.reportDetails.title }}](../../)
+{% include "components/ReportDetails.html" details: matrix.reportDetails %}
 
-<section id="{{ matrix.title }}">
-  <h2>{{ matrix.title }}</h2>
+<h2>{{ matrix.title }}</h2>
+
+<section id="{{ matrix.title | slugify }}">
   <div>
     <table class="ui celled structured table">
       <thead>
