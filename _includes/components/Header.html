@@ -1,13 +1,10 @@
-<div id="navigation-container" class="ui secondary menu">
-  <a href="/" id="test" class="item">Home</a>
-  <!---
-    <a class="item">Features</a>
-    <a class="item">News</a>
-    <a class="item ui small header">April 30, 2023 - April 30, 2023</a>
-  -->
-  <div class="right item">
-    <a href="/issuers/" class="item">Compare Issuers</a>
-    <a href="/verifiers/" class="item">Compare Verifiers</a>
+<div id="navigation-container" class="ui secondary pointing menu" style="padding-top: 20px;">
+  <a href="/" class="item">Home</a>
+  <a href="/reports/" class="item">Reports</a>
+  <div class="right menu">
+    <div class="item">
+      {% include "components/Search.html" %}
+    </div>
   </div>
 </div>
 

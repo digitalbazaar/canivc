@@ -16,7 +16,7 @@
       <div class="ui container" style="margin-top: -1em; margin-bottom: 1em;">
         {% include "components/Header.html" %}
       </div>
-      <div class="ui container">
+      <div class="ui container" style="min-height: 65vh;">
         {% if breadcrumbs %}
         <div class="ui breadcrumb">
           {% for b in breadcrumbs %}
@@ -27,10 +27,23 @@
           {% endfor %}
         </div>
         {% endif %}
+        <div
+          v-scope
+          v-show="store.searchResults.length"
+          class="ui one column stackable grid"
+        >
+          <div class="column">
+            {% include "components/SearchResults.html" %}
+          </div>
+        </div>
         {{ content }}
       </div>
-      <div class="ui very padded vertical segment" style="margin-top: 3em">
-        <div class="ui container">
+      <div
+        class="ui very padded vertical footer segment"
+        style="background-color: #FAFAFA; margin-top: 5em;">
+        <div
+          class="ui container"
+          style="max-width: 1076px;"">
           {% include "components/Footer.html" %}
         </div>
       </div>

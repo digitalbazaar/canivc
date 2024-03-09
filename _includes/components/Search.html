@@ -1,28 +1,10 @@
-<div class="ui very padded blue inverted segment centered grid">
-  <div>
-    <p class="ui massive header inverted">Can I</p>
-  </div>
-  <div>
-    <div v-scope class="ui large input">
-      <input
-        type="text"
-        id="searchField"
-        v-model="store.searchTerm"
-        @input="store.updateResults"
-        placeholder="did:key, data integrity..."
-        style="min-width: 275px; margin-top: -4px"
-      />
-    </div>
-  </div>
-  <div>
-    <p class="ui massive header inverted">?</p>
-  </div>
-  <!---
-  <div>
-    <button class="ui basic inverted button">
-      <i class="icon cog"></i>
-      Settings
-    </button>
-  </div>
-  -->
+<div v-scope class="ui transparent large icon input">
+  <input
+  type="text"
+  id="searchField"
+  v-model="store.searchTerm"
+  @input="store.updateResults"
+  placeholder="Search tests by name..."
+  style="min-width: 275px; margin-bottom: -2px"/>
+  <i class="search icon"></i>
 </div>
