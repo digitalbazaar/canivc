@@ -92,7 +92,9 @@ const extractTestsByCompany = results => {
   // Organize all tests by company name
   const companies = allTests.reduce((all, current) => {
     const {columnLabel, title, shortName} = current;
-    const url = `${BASE_URL}/reports/${shortName}/suites`;
+    // Temporary fix to match slugified url
+    const shortNameSlug = shortName.replace(".", "-");
+    const url = `${BASE_URL}/reports/${shortNameSlug}/suites`;
     const labelAndLink = {label: title, url};
     current.columns.forEach(companyName => {
       companyName = removeVendorNameSuffix(companyName);
