@@ -1,21 +1,21 @@
 [
+  {
+    "id": "passed",
+    "icon": "<i class=\"large green checkmark icon\"></i>",
+    "label": "Passed",
+    "color": ""
+  },
+  { 
+    "id": "failed", 
+    "icon": "❌", 
+    "label": "Failed", 
+    "color": "red"
+  },
   { 
     "id": "pending", 
     "icon": "🛑", 
     "label": "Pending", 
     "color": "blue"
-  },
-  {
-    "id": "passing",
-    "icon": "<i class=\"large green checkmark icon\"></i>",
-    "label": "Passing",
-    "color": ""
-  },
-  { 
-    "id": "failing", 
-    "icon": "❌", 
-    "label": "Failing", 
-    "color": "red"
   },
   {
     "id": "accessDenied",
@@ -34,17 +34,5 @@
     "icon": "—",
     "label": "Not Implemented",
     "color": "yellow"
-  },
-  {
-    "id": "passed",
-    "icon": "<i class=\"large green checkmark icon\"></i>",
-    "label": "Passed",
-    "color": ""
-  },
-  { 
-    "id": "failed", 
-    "icon": "❌", 
-    "label": "Failed", 
-    "color": "red"
   }
 ]
