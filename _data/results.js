@@ -202,13 +202,12 @@ module.exports = async function() {
     "https://w3c.github.io/vc-di-ecdsa-test-suite/index.json",
     "https://w3c.github.io/vc-di-ed25519signature2020-test-suite/index.json",
     "https://w3c.github.io/vc-di-eddsa-test-suite/index.json",
-
-    // "https://w3c-ccg.github.io/vc-di-bbs-test-suite/index.json",
+    "https://w3c-ccg.github.io/vc-di-bbs-test-suite/index.json",
     "https://w3c-ccg.github.io/did-key-test-suite/index.json",
     "https://w3c-ccg.github.io/vc-api-issuer-test-suite/index.json",
     "https://w3c-ccg.github.io/vc-api-verifier-test-suite/index.json",
     "https://w3c-ccg.github.io/status-list-2021-test-suite/index.json",
-    // "https://w3c-ccg.github.io/vc-refresh-2021-test-suite/index.json",
+    "https://w3c-ccg.github.io/vc-refresh-2021-test-suite/index.json",
   ];
 
   /* This returns a promise */
@@ -219,7 +218,15 @@ module.exports = async function() {
     })
   );
 
-  let results = await Promise.all(promises);
+  let results = await Promise.allSettled(promises);
+
+  // Handle rejected request
+  results = results.reduce((all, result) => {
+    if(result.status !== "fulfilled") {
+      console.error("Failed to fetch resource:", result.reason);
+    }
+    return result.status !== "fulfilled" ? all : [...all, result.value];
+  }, []);
 
   /* Temporarily remove interop matrices */
   results = removeInteropTestResults(results);
