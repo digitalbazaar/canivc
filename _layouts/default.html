@@ -10,6 +10,11 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/prismjs@1/themes/prism.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.9.2/dist/semantic.min.css">
+    <style>
+      [v-cloak] {
+        display: none
+      }
+    </style>
   </head>
   <body>
     <main id="content" role="main">
@@ -27,13 +32,13 @@
           {% endfor %}
         </div>
         {% endif %}
-        <div
-          v-scope
-          v-show="store.searchResults.length"
-          class="ui one column stackable grid"
-        >
-          <div class="column">
-            {% include "components/SearchResults.html" %}
+        <div v-scope v-cloak>
+          <div 
+            v-if="store.searchTerm"
+            class="ui one column stackable grid">
+            <div class="column">
+              {% include "components/SearchResults.html" %}
+            </div>
           </div>
         </div>
         {{ content }}
