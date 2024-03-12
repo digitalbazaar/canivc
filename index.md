@@ -1,6 +1,10 @@
 ---
 showHero: true
 ---
+<div style="text-align: center; margin-bottom: 1em;">
+  <h5 class="ui header text red">This is an alpha site and subject to iterative updates.</h5>
+</div>
+
 <div class="ui one column grid">
   <div class="column">
     <div id="gradient-title" class="ui very padded segment centered grid" style="border: none;">
