@@ -57,18 +57,20 @@ showHero: true
   </div>
     <div class="column">
       {%- include "components/ScoreList.html"
-        limit: 5
-        buttonLink: "/issuers"
+        limit: 100
         listTitle: "Issuers"
+        buttonLink: "/issuers"
         buttonText: "View all"
+        tooltip: "Sorted by most tests passed"
         itemList: results.companiesByTestType.Issuer -%}
     </div>
     <div class="column">
       {%- include "components/ScoreList.html"
-        limit: 5
-        buttonLink: "/verifiers"
+        limit: 100
         listTitle: "Verifiers"
         buttonText: "View all"
+        buttonLink: "/verifiers"
+        tooltip: "Sorted by most tests passed"
         itemList: results.companiesByTestType.Verifier -%}
     </div>
 </div>

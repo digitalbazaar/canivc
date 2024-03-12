@@ -1,9 +1,14 @@
 ---
 title: Implementations
 ---
-
-## Implementations
-
+<div style="display: flex; align-items: center">
+  <h2>
+    Implementations
+  </h2>
+  <div data-tooltip="Sorted alphabetically">
+    <i class="small info icon grey" style="margin-bottom: 1.5em; margin-left: 0.5em"></i>
+  </div>
+</div>
 <div class="ui bulleted list">
 {% assign list = "" %}
 {%- for i in implementations -%}
