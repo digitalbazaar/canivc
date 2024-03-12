@@ -5,8 +5,9 @@ title: Issuers
   <div class="column">
     {%
       include "components/ScoreList.html"
-        limit: 100
+        limit: 1000
         listTitle: "All Issuer Scores"
+        tooltip: "Sorted by most tests passed"
         itemList: results.companiesByTestType.Issuer
     %}
   </div>
