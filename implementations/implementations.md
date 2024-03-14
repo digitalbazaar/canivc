@@ -3,7 +3,7 @@ pagination:
   data: implementations
   size: 1
   alias: vendor
-permalink: "/implementations/{{ vendor | slugify }}"
+permalink: "/implementations/{{ vendor | slugify }}/"
 ---
 
 {% assign info = implementations[vendor] %}
