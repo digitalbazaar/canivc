@@ -1,0 +1,10 @@
+<div class="ui very padded segment" style="min-height: 450px">
+  <h2>Reports</h2>
+  <div class="ui bulleted list">
+  {%- for report in results.all -%}
+    <div class="item">
+      <a href="{{ report.respecConfig.shortName | slugify }}">{{ report.respecConfig.title }}</a>
+    </div>
+  {%- endfor -%}
+  </div>
+</div>
