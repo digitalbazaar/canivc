@@ -1,20 +1,20 @@
-<div style="display: flex; align-items: center">
-  <h2>
-    Implementations
-  </h2>
-  <div data-tooltip="Sorted by most tests passed" class="ui top right attached label">
-    <i class="small info icon grey" style="margin-bottom: 0.5em; margin-left: 0.5em"></i>
+<div class="ui very padded segment" style="min-height: 450px">
+  <div style="display: flex; align-items: center">
+    <h2>Implementations</h2>
+    <div data-tooltip="Sorted alphabetically" class="ui top right attached label">
+      <i class="small info icon grey" style="margin-bottom: 0.5em; margin-left: 0.5em"></i>
+    </div>
   </div>
-</div>
-<div class="ui bulleted list">
-{% assign list = "" %}
-{%- for i in implementations -%}
-  {% assign list = list | append: i[0] | append: ","  %}
-{%- endfor -%}
-{% assign names = list | split: "," | sort_natural %}
-{%- for name in names -%}
-  <div class="item">
-    <a href="{{ name | slugify }}">{{ name }}</a>
+  <div class="ui bulleted list">
+  {% assign list = "" %}
+  {%- for i in implementations -%}
+    {% assign list = list | append: i[0] | append: ","  %}
+  {%- endfor -%}
+  {% assign names = list | split: "," | sort_natural %}
+  {%- for name in names -%}
+    <div class="item">
+      <a href="{{ name | slugify }}">{{ name }}</a>
+    </div>
+  {%- endfor -%}
   </div>
-{%- endfor -%}
 </div>
