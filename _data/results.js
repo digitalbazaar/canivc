@@ -1,8 +1,5 @@
 const EleventyFetch = require("@11ty/eleventy-fetch");
 
-// Constants
-const BASE_URL = "http://localhost:8080";
-
 // Organize data into company test results by test type
 const extractCompanyResultsByTestType = results => {
   // Helper function: Extract all test results for each test
@@ -94,7 +91,7 @@ const extractTestsByCompany = results => {
     const {columnLabel, title, shortName} = current;
     // Temporary fix to match slugified url
     const shortNameSlug = shortName.replace(".", "-");
-    const url = `${BASE_URL}/reports/${shortNameSlug}/suites`;
+    const url = `/reports/${shortNameSlug}/suites`;
     const labelAndLink = {label: title, url};
     current.columns.forEach(companyName => {
       companyName = removeVendorNameSuffix(companyName);
