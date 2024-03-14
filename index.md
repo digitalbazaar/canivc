@@ -1,8 +1,8 @@
 ---
 showHero: true
 ---
-<div style="text-align: center; margin-bottom: 1em;">
-  <h5 class="ui header text red">This is an alpha site and subject to iterative updates.</h5>
+<div class="ui basic centered error message" style="margin-bottom: 1em;">
+  <i class="exclamation circle icon"></i> This is an alpha site and subject to iterative updates.
 </div>
 
 <div class="ui one column grid">
