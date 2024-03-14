@@ -5,8 +5,8 @@ title: Implementations
   <h2>
     Implementations
   </h2>
-  <div data-tooltip="Sorted alphabetically">
-    <i class="small info icon grey" style="margin-bottom: 1.5em; margin-left: 0.5em"></i>
+  <div data-tooltip="Sorted by most tests passed" class="ui top right attached label">
+    <i class="small info icon grey" style="margin-bottom: 0.5em; margin-left: 0.5em"></i>
   </div>
 </div>
 <div class="ui bulleted list">
