@@ -1,11 +1,9 @@
 <div class="ui very padded segment" style="min-height: 450px">
-  <div style="display: flex; align-items: center">
-    <h2>Implementations</h2>
-    <div data-tooltip="Sorted alphabetically" class="ui top right attached label">
-      <i class="small info icon grey" style="margin-bottom: 0.5em; margin-left: 0.5em"></i>
-    </div>
+  <h2>Implementations</h2>
+  <div data-tooltip="Sorted alphabetically" class="ui top right attached label">
+    <i class="small info icon grey"></i>
   </div>
-  <div class="ui bulleted list">
+  <div class="ui bulleted list" style="margin-top: 0 !important;">
   {% assign list = "" %}
   {%- for i in implementations -%}
     {% assign list = list | append: i[0] | append: ","  %}
