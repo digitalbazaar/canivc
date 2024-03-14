@@ -2,7 +2,7 @@
   <div style="display: flex; align-items: center;">
     <h2 style="margin-bottom: 0;">{{ listTitle }}</h2>
     {% if tooltip %}
-    <div data-tooltip="{{ tooltip }}">
+    <div data-tooltip="{{ tooltip }}" class="ui top right attached label">
       <i class="small info icon grey" style="margin-bottom: 0.5em; margin-left: 0.5em"></i>
     </div>
     {% endif %}
@@ -25,7 +25,7 @@
   <div style="display: flex;">
     <button
       class="ui button"
-      style="margin-left: auto; min-width: 130px;"
+      style="min-width: 130px;"
       onclick="location.href='{{ buttonLink }}'">
       {{ buttonText }}
     </button>
