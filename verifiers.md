@@ -5,7 +5,7 @@ title: Verifiers
   <div class="column">
     {%
       include "components/ScoreList.html"
-        limit: 1000
+        limit: 100
         listTitle: "All Verifier Scores"
         tooltip: "Sorted by most tests passed"
         itemList: results.companiesByTestType.Verifier
