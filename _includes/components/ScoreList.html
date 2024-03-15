@@ -23,12 +23,12 @@
   </div>
   {% if buttonText %}
   <div style="display: flex;">
-    <button
+    <a
       class="ui button"
-      style="min-width: 130px;"
-      onclick="location.href='{{ buttonLink }}'">
+      href="{{ buttonLink }}"
+      style="min-width: 130px;">
       {{ buttonText }}
-    </button>
+    </a>
   </div>
   {% endif %}
 </div>
