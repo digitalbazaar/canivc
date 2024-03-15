@@ -50,12 +50,12 @@ permalink: "/implementations/{{ vendor | slugify }}/"
         <span class="ui small grey italic text">Test Results</span>
       </div>
       {% for link in testCategory[1] -%}
-      <button
+      <a
         style="margin-top: 0.25em"
         class="tiny ui inverted secondary button"
-        onclick='location.href="{{link.url}}/{{ link.label | slugify }}"'>
-          {{ link.label }}
-      </button>
+        href="{{link.url}}/{{ link.label | slugify }}">
+        {{ link.label }}
+      </a>
       {% endfor -%}
     </div>
   </div>
