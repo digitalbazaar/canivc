@@ -71,10 +71,12 @@ module.exports = function (eleventyConfig) {
     return str.slice(0, endIdx);
   });
 
+  // Copy favicon files to root
+  eleventyConfig.addPassthroughCopy({ "images/favicon" : "/" });
   eleventyConfig.addPassthroughCopy("assets/");
   eleventyConfig.addPassthroughCopy("**/*.jpg");
   eleventyConfig.addPassthroughCopy("**/*.png");
-
+  
   // Run pagefind script after site has built
   eleventyConfig.on("eleventy.after", () => {
     execSync(`npx -y pagefind --site _site`, { encoding: "utf-8" });
