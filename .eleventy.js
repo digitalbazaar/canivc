@@ -76,6 +76,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("assets/");
   eleventyConfig.addPassthroughCopy("**/*.jpg");
   eleventyConfig.addPassthroughCopy("**/*.png");
+  eleventyConfig.addPassthroughCopy("site.webmanifest");
   // Run pagefind script after site has built
   eleventyConfig.on("eleventy.after", () => {
     execSync(`npx -y pagefind --site _site`, { encoding: "utf-8" });
