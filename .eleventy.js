@@ -1,7 +1,7 @@
 // Imports
 const markdownIt = require("markdown-it");
 const { execSync } = require("child_process");
-const legend = require("./_data/legend.json");
+const legend = require("./src/_data/legend.json");
 const BarRating = require("./_shortcodes/BarRating");
 const markdownItAnchor = require("markdown-it-anchor");
 const mermaidShortcode = require("./_shortcodes/mermaid");
@@ -58,7 +58,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("formatJSON", (data) => {
     return JSON.stringify(data, null, "\n");
   });
-  eleventyConfig.addFilter("findObjectByProperty", (data, prop, value) => { 
+  eleventyConfig.addFilter("findObjectByProperty", (data, prop, value) => {
     return data ? data.find(item => item[prop] === value) : {};
   });
   eleventyConfig.addFilter("removeQuotes", (str) => {
@@ -72,11 +72,11 @@ module.exports = function (eleventyConfig) {
   });
 
   // Copy favicon files to root
-  eleventyConfig.addPassthroughCopy({ "images/favicon" : "/" });
-  eleventyConfig.addPassthroughCopy("assets/");
-  eleventyConfig.addPassthroughCopy("**/*.jpg");
-  eleventyConfig.addPassthroughCopy("**/*.png");
-  eleventyConfig.addPassthroughCopy("site.webmanifest");
+  eleventyConfig.addPassthroughCopy({ "src/images/favicon" : "/" });
+  eleventyConfig.addPassthroughCopy("src/assets/");
+  eleventyConfig.addPassthroughCopy("src/**/*.jpg");
+  eleventyConfig.addPassthroughCopy("src/**/*.png");
+  eleventyConfig.addPassthroughCopy("src/site.webmanifest");
   // Run pagefind script after site has built
   eleventyConfig.on("eleventy.after", () => {
     execSync(`npx -y pagefind --site _site`, { encoding: "utf-8" });
@@ -85,6 +85,8 @@ module.exports = function (eleventyConfig) {
   // Return your Object options:
   return {
     dir: {
+      input: "src/",
+
       layouts: "_layouts",
     },
   };
