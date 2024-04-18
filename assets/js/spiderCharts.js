@@ -1,9 +1,9 @@
 /* global document, Chart */
-const ctx = Array.from(document.querySelectorAll(".spider-chart"));
+const ctx = Array.from(document.querySelectorAll('.spider-chart'));
 
 // Chart global defaults
 Chart.defaults.font.size = 16;
-Chart.defaults.plugins.legend.align = "end";
+Chart.defaults.plugins.legend.align = 'end';
 
 // Iterate over each context
 ctx.forEach(elementCtx => {
@@ -15,13 +15,13 @@ ctx.forEach(elementCtx => {
   data = data.map(datum => datum === null ? 0 : datum);
 
   // Colors
-  const white = "#FFFFFF";
-  const fomanticGreen = "rgb(0, 181, 173)";
-  const fomanticGreenTransparent = "rgba(0, 181, 173, 0.2)";
+  const white = '#FFFFFF';
+  const fomanticGreen = 'rgb(0, 181, 173)';
+  const fomanticGreenTransparent = 'rgba(0, 181, 173, 0.2)';
 
   // Build chart
   new Chart(elementCtx, {
-    type: "radar",
+    type: 'radar',
     data: {
       labels,
       datasets: [
@@ -29,7 +29,7 @@ ctx.forEach(elementCtx => {
           data,
           fill: true,
           pointBorderColor: white,
-          label: "% of Tests Passed",
+          label: '% of Tests Passed',
           borderColor: fomanticGreen,
           pointHoverBackgroundColor: white,
           pointBackgroundColor: fomanticGreen,
@@ -52,7 +52,7 @@ ctx.forEach(elementCtx => {
           pointLabels: {font: {size: 12}},
           ticks: {
             // Return every other tick value
-            callback: (value, index) => index % 2 ? "" : value
+            callback: (value, index) => index % 2 ? '' : value
           }
         }
       }

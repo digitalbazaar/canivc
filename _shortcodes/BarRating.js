@@ -1,9 +1,9 @@
 // Colors pulled from Fomantic-UI's current theme
 const colors = {
-  passed: "#00b5ad", // teal
-  failed: "#db2828", // red
-  pending: "#fbbd08", // yellow
-  background: "#767676" // gray
+  passed: '#00b5ad', // teal
+  failed: '#db2828', // red
+  pending: '#fbbd08', // yellow
+  background: '#767676' // gray
 };
 
 /**
@@ -18,7 +18,7 @@ const colors = {
  */
 function BarRating(passed, pending, failed, total, width) {
   // Style
-  const componentWidth = width ? `${width}` : "40%";
+  const componentWidth = width ? `${width}` : '40%';
   // Percentage of test passed, pending, & failed
   const passedWidth = Math.round(passed / total * 100);
   const pendingWidth = Math.round(pending / total * 100);

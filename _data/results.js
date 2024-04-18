@@ -1,4 +1,4 @@
-const EleventyFetch = require("@11ty/eleventy-fetch");
+const EleventyFetch = require('@11ty/eleventy-fetch');
 
 // Organize data into company test results by test type
 const extractCompanyResultsByTestType = results => {
@@ -17,7 +17,7 @@ const extractCompanyResultsByTestType = results => {
 
   // Helper function: Remove company name suffix (Digital Bazaar: P-256)
   const removeCompanySuffix = company => {
-    const suffix = ": P-";
+    const suffix = ': P-';
     const indexToRemove = company.indexOf(suffix);
     return indexToRemove > -1 ? company.slice(0, indexToRemove) : company;
   };
@@ -90,7 +90,7 @@ const extractTestsByCompany = results => {
   const companies = allTests.reduce((all, current) => {
     const {columnLabel, title, shortName} = current;
     // Temporary fix to match slugified url
-    const shortNameSlug = shortName.replace(".", "-");
+    const shortNameSlug = shortName.replace('.', '-');
     const url = `/reports/${shortNameSlug}/suites`;
     const labelAndLink = {label: title, url};
     current.columns.forEach(companyName => {
@@ -109,7 +109,7 @@ const extractTestsByCompany = results => {
 const collectSpecListByGroup = results => {
   return results.flatMap(result => {
     const rv = result.respecConfig;
-    rv.group = rv.github.split("/")[3];
+    rv.group = rv.github.split('/')[3];
     return rv;
   });
 };
@@ -148,7 +148,7 @@ const getSpiderResults = results => {
       matrix.suites.forEach(suite => {
         const vendor = removeVendorNameSuffix(suite.title);
         const passed = suite.tests
-          .filter(test => test.state === "passed").length;
+          .filter(test => test.state === 'passed').length;
         const total = suite.tests.length;
         const percentage = Math.round((passed / total) * 100);
         if(!vendorResults[vendor]) {
@@ -169,8 +169,8 @@ const getSpiderResults = results => {
  */
 function removeVendorNameSuffix(vendorName) {
   // Remove P-256 & P-384 vendor name extension
-  const endIdx = vendorName.indexOf(": P-") > -1 ?
-    vendorName.indexOf(": P-") : vendorName.length;
+  const endIdx = vendorName.indexOf(': P-') > -1 ?
+    vendorName.indexOf(': P-') : vendorName.length;
   return vendorName.slice(0, endIdx);
 }
 
@@ -186,7 +186,7 @@ function removeInteropTestResults(results) {
     ...result,
     matrices: result.matrices.filter(matrix => {
       const testName = matrix.title.toLowerCase();
-      return !testName.includes("interop");
+      return !testName.includes('interop');
     })
   }));
   return curatedResults;
@@ -195,23 +195,23 @@ function removeInteropTestResults(results) {
 // Repeated fetch
 module.exports = async function() {
   const urls = [
-    "https://w3c.github.io/vc-data-model-2.0-test-suite/index.json",
-    "https://w3c.github.io/vc-di-ecdsa-test-suite/index.json",
-    "https://w3c.github.io/vc-di-ed25519signature2020-test-suite/index.json",
-    "https://w3c.github.io/vc-di-eddsa-test-suite/index.json",
-    "https://w3c-ccg.github.io/vc-di-bbs-test-suite/index.json",
-    "https://w3c-ccg.github.io/did-key-test-suite/index.json",
-    "https://w3c-ccg.github.io/vc-api-issuer-test-suite/index.json",
-    "https://w3c-ccg.github.io/vc-api-verifier-test-suite/index.json",
-    "https://w3c-ccg.github.io/status-list-2021-test-suite/index.json",
-    "https://w3c-ccg.github.io/vc-refresh-2021-test-suite/index.json",
+    'https://w3c.github.io/vc-data-model-2.0-test-suite/index.json',
+    'https://w3c.github.io/vc-di-ecdsa-test-suite/index.json',
+    'https://w3c.github.io/vc-di-ed25519signature2020-test-suite/index.json',
+    'https://w3c.github.io/vc-di-eddsa-test-suite/index.json',
+    'https://w3c-ccg.github.io/vc-di-bbs-test-suite/index.json',
+    'https://w3c-ccg.github.io/did-key-test-suite/index.json',
+    'https://w3c-ccg.github.io/vc-api-issuer-test-suite/index.json',
+    'https://w3c-ccg.github.io/vc-api-verifier-test-suite/index.json',
+    'https://w3c-ccg.github.io/status-list-2021-test-suite/index.json',
+    'https://w3c-ccg.github.io/vc-refresh-2021-test-suite/index.json',
   ];
 
   /* This returns a promise */
   const promises = urls.map(url =>
     EleventyFetch(url, {
-      duration: "1w", // save for 1 week
-      type: "json", // we’ll parse JSON for you
+      duration: '1w', // save for 1 week
+      type: 'json', // we’ll parse JSON for you
     })
   );
 
@@ -219,10 +219,10 @@ module.exports = async function() {
 
   // Handle rejected request
   results = results.reduce((all, result) => {
-    if(result.status !== "fulfilled") {
-      console.error("Failed to fetch resource:", result.reason);
+    if(result.status !== 'fulfilled') {
+      console.error('Failed to fetch resource:', result.reason);
     }
-    return result.status !== "fulfilled" ? all : [...all, result.value];
+    return result.status !== 'fulfilled' ? all : [...all, result.value];
   }, []);
 
   /* Temporarily remove interop matrices */
