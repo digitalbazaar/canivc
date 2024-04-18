@@ -13,5 +13,14 @@ module.exports = {
   ],
   rules: {
     'jsdoc/check-examples': 0
-  }
+  },
+  overrides: [
+    {
+      files: ['assets/js/*'],
+      env: {
+        browser: true
+      },
+      sourceType: 'module'
+    }
+  ]
 };
