@@ -1,7 +1,7 @@
-import {createApp, reactive} from "https://unpkg.com/petite-vue?module";
+import {createApp, reactive} from 'https://unpkg.com/petite-vue?module';
 
 const store = reactive({
-  searchTerm: "",
+  searchTerm: '',
   searchResults: [],
   paginationNumber: 5,
   loadingResults: false,
@@ -18,7 +18,7 @@ const store = reactive({
     if(!this.loadingResults) {
       this.toggleLoading();
     }
-    const pagefind = await import("/pagefind/pagefind.js");
+    const pagefind = await import('/pagefind/pagefind.js');
     const search = await pagefind.debouncedSearch(this.searchTerm);
     if(search !== null) {
       this.paginationNumber = 5;
