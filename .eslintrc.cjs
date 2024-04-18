@@ -16,11 +16,13 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['assets/js/*'],
+      files: ['src/assets/js/*'],
       env: {
         browser: true
       },
-      sourceType: 'module'
+      parserOptions: {
+        sourceType: 'module'
+      }
     }
   ]
 };
