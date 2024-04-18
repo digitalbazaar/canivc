@@ -3,8 +3,8 @@ module.exports = content => {
 <span class="ui top right attached blue icon label">
   <i class="expand icon"></i>
 </span>\n` +
-  "\n```mermaid\n" +
+  '\n```mermaid\n' +
   content +
-  "\n```\n" +
-  "</div>";
+  '\n```\n' +
+  '</div>';
 };

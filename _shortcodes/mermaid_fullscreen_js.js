@@ -1,5 +1,5 @@
 module.exports = () => {
-  const src = "https://unpkg.com/mermaid@10/dist/mermaid.esm.min.mjs";
+  const src = 'https://unpkg.com/mermaid@10/dist/mermaid.esm.min.mjs';
   return `<script type="module" async>
     import mermaid from '${src}';
     mermaid.run({
