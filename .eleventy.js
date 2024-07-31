@@ -82,6 +82,8 @@ module.exports = function (eleventyConfig) {
     execSync(`npx -y pagefind --site _site`, { encoding: "utf-8" });
   });
 
+  eleventyConfig.addGlobalData("lastGenerated", (new Date()).toISOString());
+
   // Return your Object options:
   return {
     dir: {
