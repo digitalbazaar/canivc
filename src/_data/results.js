@@ -51,12 +51,15 @@ const extractCompanyResultsByTestType = results => {
           Object.keys(testResults).forEach(company => {
             const companyName = removeCompanySuffix(company);
             all[companyName] = all[companyName] ?
-              Object.keys(testResults[company]).reduce(
-                (allStates, state) => {
-                  const previousCount = all[companyName]?.[state] || 0;
-                  const count = testResults[company]?.[state] || 0;
-                  return {...allStates, [state]: previousCount + count};
-                }, {}) :
+              {
+                ...all[companyName],
+                ...Object.keys(testResults[company]).reduce(
+                  (allStates, state) => {
+                    const previousCount = all[companyName]?.[state] || 0;
+                    const count = testResults[company]?.[state] || 0;
+                    return {...allStates, [state]: previousCount + count};
+                  }, {})
+              } :
               testResults[companyName];
           });
           return all;
