@@ -204,7 +204,6 @@ module.exports = async function() {
     'https://w3c-ccg.github.io/vc-api-issuer-test-suite/index.json',
     'https://w3c-ccg.github.io/vc-api-verifier-test-suite/index.json',
     'https://w3c.github.io/vc-bitstring-status-list-test-suite/index.json',
-    'https://w3c-ccg.github.io/vc-refresh-2021-test-suite/index.json',
   ];
 
   /* This returns a promise */
