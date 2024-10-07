@@ -148,6 +148,7 @@ const getSpiderResults = results => {
     result.matrices.forEach(matrix => {
       const testName = matrix.title;
       const type = matrix.columnLabel;
+      matrix.suites = matrix.suites ?? [];
       matrix.suites.forEach(suite => {
         const vendor = removeVendorNameSuffix(suite.title);
         const passed = suite.tests
