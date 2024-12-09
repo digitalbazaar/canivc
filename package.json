@@ -7,6 +7,7 @@
     "build": "eleventy",
     "lint": "eslint .",
     "serve": "rm -rf _site/ && eleventy --serve",
+    "start": "rm -rf _site/ && eleventy --serve",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
