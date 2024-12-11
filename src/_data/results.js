@@ -1,5 +1,17 @@
 const EleventyFetch = require('@11ty/eleventy-fetch');
 
+const specUrls = [
+  'https://w3c.github.io/vc-data-model-2.0-test-suite/index.json',
+  'https://w3c.github.io/vc-di-ecdsa-test-suite/index.json',
+  'https://w3c.github.io/vc-di-ed25519signature2020-test-suite/index.json',
+  'https://w3c.github.io/vc-di-eddsa-test-suite/index.json',
+  'https://w3c.github.io/vc-di-bbs-test-suite/index.json',
+  'https://w3c-ccg.github.io/did-key-test-suite/index.json',
+  'https://w3c-ccg.github.io/vc-api-issuer-test-suite/index.json',
+  'https://w3c-ccg.github.io/vc-api-verifier-test-suite/index.json',
+  'https://w3c.github.io/vc-bitstring-status-list-test-suite/index.json',
+];
+
 // Organize data into company test results by test type
 const extractCompanyResultsByTestType = results => {
   // Helper function: Extract all test results for each test
@@ -198,20 +210,8 @@ function removeInteropTestResults(results) {
 
 // Repeated fetch
 module.exports = async function() {
-  const urls = [
-    'https://w3c.github.io/vc-data-model-2.0-test-suite/index.json',
-    'https://w3c.github.io/vc-di-ecdsa-test-suite/index.json',
-    'https://w3c.github.io/vc-di-ed25519signature2020-test-suite/index.json',
-    'https://w3c.github.io/vc-di-eddsa-test-suite/index.json',
-    'https://w3c.github.io/vc-di-bbs-test-suite/index.json',
-    'https://w3c-ccg.github.io/did-key-test-suite/index.json',
-    'https://w3c-ccg.github.io/vc-api-issuer-test-suite/index.json',
-    'https://w3c-ccg.github.io/vc-api-verifier-test-suite/index.json',
-    'https://w3c.github.io/vc-bitstring-status-list-test-suite/index.json',
-  ];
-
   /* This returns a promise */
-  const promises = urls.map(url =>
+  const promises = specUrls.map(url =>
     EleventyFetch(url, {
       duration: '1w', // save for 1 week
       type: 'json', // we’ll parse JSON for you
