@@ -14,5 +14,11 @@ $ npm run serve # or `build` for just file generation
 
 If all worked as hoped, you can visit https://localhost:8080/ to test the site.
 
+## Data Source
+
+The content of canivc.com is aggregated from W3C Verifiable Credential and
+Credential Community Group test suite report results. The list of currently
+configured test suite report URLs can be found in `src/_data/results.js`.
+
 ## License
 [BSD-3-Clause](LICENSE.md) © 2023 Digital Bazaar, Inc.
