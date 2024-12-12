@@ -13,14 +13,6 @@ breadcrumbs:
     details: report.respecConfig
     showLinks: true %}
 
-<div class="ui right floated card">
-  <pre class="content">
-    {%- for stat in report.stats %}
-    {{ stat }}
-    {%- endfor -%}
-  </pre>
-</div>
-
 <div class="ui bulleted list">
 {%- for matrix in report.matrices -%}
   <div class="item">
