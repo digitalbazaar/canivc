@@ -14,19 +14,12 @@ const specUrls = [
 
 // Organize data into company test results by test type
 const extractCompanyResultsByTestType = results => {
-  // Helper function: Remove company name suffix (Digital Bazaar: P-256)
-  const removeCompanySuffix = company => {
-    const suffix = ': P-';
-    const indexToRemove = company.indexOf(suffix);
-    return indexToRemove > -1 ? company.slice(0, indexToRemove) : company;
-  };
-
   // Helper function: Extract all test results for each test
   const getTestResults = (all, currentSuite) => {
     const {title, tests} = currentSuite;
     return {
       ...all,
-      [removeCompanySuffix(title)]: tests.reduce((all, test) => {
+      [removeVendorNameSuffix(title)]: tests.reduce((all, test) => {
         const testState = test.state;
         all[testState] = all[testState] ? all[testState] + 1 : 1;
         return {total: tests.length, ...all};
