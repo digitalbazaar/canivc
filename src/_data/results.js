@@ -19,7 +19,7 @@ const extractCompanyResultsByTestType = results => {
     const {title, tests} = currentSuite;
     return {
       ...all,
-      [removeVendorNameSuffix(title)]: tests.reduce((all, test) => {
+      [removeNameSuffix(title)]: tests.reduce((all, test) => {
         const testState = test.state;
         all[testState] = all[testState] ? all[testState] + 1 : 1;
         return {total: tests.length, ...all};
@@ -101,7 +101,7 @@ const extractTestsByCompany = results => {
     const url = `/reports/${shortNameSlug}/suites`;
     const labelAndLink = {label: title, url};
     current.columns.forEach(companyName => {
-      companyName = removeVendorNameSuffix(companyName);
+      companyName = removeNameSuffix(companyName);
       if(!all[companyName]?.[columnLabel]) {
         all[companyName] = {...all[companyName], [columnLabel]: [labelAndLink]};
       } else {
@@ -154,7 +154,7 @@ const getSpiderResults = results => {
       const type = matrix.columnLabel;
       matrix.suites = matrix.suites ?? [];
       matrix.suites.forEach(suite => {
-        const vendor = removeVendorNameSuffix(suite.title);
+        const vendor = removeNameSuffix(suite.title);
         const passed = suite.tests
           .filter(test => test.state === 'passed').length;
         const total = suite.tests.length;
@@ -170,16 +170,16 @@ const getSpiderResults = results => {
 };
 
 /**
- * Removes P-256 & P-384 vendor name extension.
+ * Removes P-256 & P-384 name extension.
  *
- * @param {string} vendorName - Example: Digital Bazaar: P-256.
- * @returns {string} Returns vendor name example: Digital Bazaar.
+ * @param {string} name - Example: Digital Bazaar: P-256.
+ * @returns {string} Returns name example: Digital Bazaar.
  */
-function removeVendorNameSuffix(vendorName) {
+function removeNameSuffix(name) {
   // Remove P-256 & P-384 vendor name extension
-  const endIdx = vendorName.indexOf(': P-') > -1 ?
-    vendorName.indexOf(': P-') : vendorName.length;
-  return vendorName.slice(0, endIdx);
+  const endIdx = name.indexOf(': P-') > -1 ?
+    name.indexOf(': P-') : name.length;
+  return name.slice(0, endIdx);
 }
 
 /**
