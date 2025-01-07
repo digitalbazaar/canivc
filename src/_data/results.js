@@ -26,7 +26,7 @@ const extractCompanyResultsByTestType = results => {
     const {title, tests} = currentSuite;
     return {
       ...all,
-      [title]: tests.reduce((all, test) => {
+      [removeCompanySuffix(title)]: tests.reduce((all, test) => {
         const testState = test.state;
         all[testState] = all[testState] ? all[testState] + 1 : 1;
         return {total: tests.length, ...all};
@@ -61,18 +61,17 @@ const extractCompanyResultsByTestType = results => {
       const companyTotals = testResultsByTestType[testType]
         .reduce((all, testResults) => {
           Object.keys(testResults).forEach(company => {
-            const companyName = removeCompanySuffix(company);
-            all[companyName] = all[companyName] ?
+            all[company] = all[company] ?
               {
-                ...all[companyName],
+                ...all[company],
                 ...Object.keys(testResults[company]).reduce(
                   (allStates, state) => {
-                    const previousCount = all[companyName]?.[state] || 0;
+                    const previousCount = all[company]?.[state] || 0;
                     const count = testResults[company]?.[state] || 0;
                     return {...allStates, [state]: previousCount + count};
                   }, {})
               } :
-              testResults[companyName];
+              testResults[company];
           });
           return all;
         }, {});
