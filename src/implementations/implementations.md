@@ -24,7 +24,7 @@ permalink: "/implementations/{{ vendor | slugify }}/"
       <canvas
         class="spider-chart"
         style="max-height: 400px"
-        data-chart-values='{{chartValues}}' 
+        data-chart-values='{{chartValues}}'
         data-chart-labels='{{chartLabels}}'></canvas>
     </div>
   </div>
