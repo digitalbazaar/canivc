@@ -6,7 +6,7 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'commonjs'
   },
-  ignorePatterns: ['_site'],
+  ignorePatterns: ['_site', '!.eleventy.js'],
   extends: [
     'eslint-config-digitalbazaar',
     'eslint-config-digitalbazaar/jsdoc'
