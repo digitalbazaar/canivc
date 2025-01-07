@@ -184,17 +184,18 @@ function removeNameSuffix(name) {
 
 /**
  * Removes the "interop" matrices because they have no "suites" (columns)
- * and their rows are structured differently than all other matrices.
+ * and their rows are structured differently than all other matrices. Also
+ * removes "at risk" sections which are W3C process specific.
  *
  * @param {Array} results - Results from urls.
  * @returns {Array} Results without interop matrices.
  */
-function removeInteropTestResults(results) {
+function removeSomeTestSections(results) {
   const curatedResults = results.map(result => ({
     ...result,
     matrices: result.matrices.filter(matrix => {
       const testName = matrix.title.toLowerCase();
-      return !testName.includes('interop');
+      return !testName.includes('interop') && !testName.includes('at risk');
     })
   }));
   return curatedResults;
@@ -220,8 +221,8 @@ module.exports = async function() {
     return result.status !== 'fulfilled' ? all : [...all, result.value];
   }, []);
 
-  /* Temporarily remove interop matrices */
-  results = removeInteropTestResults(results);
+  /* Temporarily remove interop and at risk matrices */
+  results = removeSomeTestSections(results);
 
   return {
     all: results,
