@@ -57,9 +57,6 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter('getOptional', optional => {
     return optional ? 'optional' : 'not-optional';
   });
-  eleventyConfig.addFilter('formatJSON', data => {
-    return JSON.stringify(data, null, '\n');
-  });
   eleventyConfig.addFilter('findObjectByProperty', (data, prop, value) => {
     return data ? data.find(item => item[prop] === value) : {};
   });
