@@ -1,17 +1,22 @@
-<div class="ui header">
-  {{ details.title }}
-  <div class="ui sub header">
-    {{ details.subtitle }}
+<div class="ui two column stackable grid" style="margin-top: 1em">
+  <div class="column">
+    <div class="ui header">
+      {{ details.title }}
+      <div class="ui sub header">
+        {{ details.subtitle }}
+      </div>
+    </div>
+  </div>
+  <div class="column">
+    {% if showLinks %}
+    <a class="ui large labeled icon blue button" href="{{ details.github }}">
+      <i class="github icon"></i>
+      Test Suite Repo
+    </a>
+    <a class="ui large labeled icon green button" href="{{ details.edDraftURI }}">
+      <i class="clipboard outline icon"></i>
+      Report Results
+    </a>
+    {% endif %}
   </div>
 </div>
-
-{% if showLinks %}
-<a class="ui large labeled icon blue button" href="{{ details.github }}">
-  <i class="github icon"></i>
-  Test Suite Repo
-</a>
-<a class="ui large labeled icon green button" href="{{ details.edDraftURI }}">
-  <i class="clipboard outline icon"></i>
-  Report Results
-</a>
-{% endif %}
