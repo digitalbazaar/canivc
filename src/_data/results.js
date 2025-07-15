@@ -12,6 +12,13 @@ const specUrls = [
   'https://w3c.github.io/vc-bitstring-status-list-test-suite/index.json',
 ];
 
+// Helper function: Remove company name suffix (Digital Bazaar: P-256)
+const removeCompanySuffix = company => {
+  const suffix = ': P-';
+  const indexToRemove = company.indexOf(suffix);
+  return indexToRemove > -1 ? company.slice(0, indexToRemove) : company;
+};
+
 // Organize data into company test results by test type
 const extractCompanyResultsByTestType = results => {
   // Helper function: Extract all test results for each test
