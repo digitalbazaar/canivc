@@ -236,6 +236,12 @@ module.exports = async function() {
     vendorChartData: getSpiderResults(results),
     testsByCompany: extractTestsByCompany(results),
     companiesByTestType: extractCompanyResultsByTestType(results),
-    specsByGroup: collectSpecListByGroup(results)
+    specsByGroup: collectSpecListByGroup(results),
+    specsImplementedBy: results.map(result => ({
+      title: result.title,
+      implementations: [
+        ...(new Set(result.matrices[0].columns.map(removeCompanySuffix)))
+      ]
+    }))
   };
 };
