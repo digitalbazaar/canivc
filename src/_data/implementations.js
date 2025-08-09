@@ -1,4 +1,4 @@
-module.exports = async () => {
+export default async () => {
   const {
     allImplementations: vcwgImplementations
   } = await import('w3c-vc-test-suite-implementations');

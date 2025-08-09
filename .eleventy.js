@@ -1,14 +1,14 @@
 // Imports
-const markdownIt = require('markdown-it');
-const {execSync} = require('child_process');
-const legend = require('./src/_data/legend.json');
-const BarRating = require('./_shortcodes/BarRating');
-const markdownItAnchor = require('markdown-it-anchor');
-const mermaidShortcode = require('./_shortcodes/mermaid');
-const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
-const eleventyMermaidPlugin = require('@kevingimbel/eleventy-plugin-mermaid');
-const mermaidFullscreenJsShortcode =
-  require('./_shortcodes/mermaid_fullscreen_js');
+import BarRating from './_shortcodes/BarRating.js';
+import eleventyMermaidPlugin from '@kevingimbel/eleventy-plugin-mermaid';
+import {execSync} from 'node:child_process';
+import legend from './src/_data/legend.json' with {type: 'json'};
+import markdownIt from 'markdown-it';
+import markdownItAnchor from 'markdown-it-anchor';
+import mermaidFullscreenJsShortcode from
+  './_shortcodes/mermaid_fullscreen_js.js';
+import mermaidShortcode from './_shortcodes/mermaid.js';
+import syntaxHighlight from '@11ty/eleventy-plugin-syntaxhighlight';
 
 // Constants
 const statusMarks = legend.reduce((all, statusMark) => {
@@ -22,7 +22,7 @@ const statusLabel = legend.reduce((all, statusMark) => {
 }, {});
 
 // Eleventy Configurations
-module.exports = function(eleventyConfig) {
+export default function(eleventyConfig) {
   /* Markdown Overrides */
   const markdownLibrary = markdownIt({
     html: true,
@@ -91,4 +91,4 @@ module.exports = function(eleventyConfig) {
       layouts: '_layouts',
     },
   };
-};
+}

@@ -56,4 +56,4 @@ function BarRating(passed, pending, failed, total, width) {
   `;
 }
 
-module.exports = BarRating;
+export default BarRating;

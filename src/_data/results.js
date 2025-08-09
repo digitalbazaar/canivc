@@ -1,4 +1,4 @@
-const EleventyFetch = require('@11ty/eleventy-fetch');
+import EleventyFetch from '@11ty/eleventy-fetch';
 
 const specUrls = [
   'https://w3c.github.io/vc-data-model-2.0-test-suite/index.json',
@@ -209,7 +209,7 @@ function removeSomeTestSections(results) {
 }
 
 // Repeated fetch
-module.exports = async function() {
+export default async function() {
   /* This returns a promise */
   const promises = specUrls.map(url =>
     EleventyFetch(url, {
@@ -244,4 +244,4 @@ module.exports = async function() {
       ]
     }))
   };
-};
+}
