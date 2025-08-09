@@ -1,4 +1,4 @@
-module.exports = content => {
+export default content => {
   return `<div style="position: relative">
 <span class="ui top right attached blue icon label">
   <i class="expand icon"></i>
