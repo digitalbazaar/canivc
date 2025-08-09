@@ -1,4 +1,4 @@
-/* global document, Chart */
+/* global Chart */
 const ctx = Array.from(document.querySelectorAll('.spider-chart'));
 
 // Chart global defaults
