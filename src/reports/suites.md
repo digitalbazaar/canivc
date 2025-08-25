@@ -37,9 +37,13 @@
 ---
 
 {% include "components/ReportDetails.html"
-    details: matrix.reportDetails %}
+    details: matrix.reportDetails
+    showLinks: true %}
 
-<h2>{{ matrix.title }}</h2>
+<h2>
+  {{ matrix.title }}
+  <a href="{{ matrix.reportDetails.edDraftURI }}#{{ matrix.title | url_encode | replace: '+', '%20' }}"><i class="external icon"></i></a>
+</h2>
 
 <section id="{{ matrix.title | slugify }}">
   <div>
