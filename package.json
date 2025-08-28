@@ -23,10 +23,10 @@
     "@11ty/eleventy": "^3.1.2",
     "@11ty/eleventy-fetch": "^5.1.0",
     "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.2",
+    "@digitalbazaar/eslint-config": "github:digitalbazaar/eslint-config-digitalbazaar#use-eslint-v9",
     "@kevingimbel/eleventy-plugin-mermaid": "^3.0.0",
-    "eslint": "^9.33.0",
-    "eslint-config-digitalbazaar": "github:digitalbazaar/eslint-config-digitalbazaar#use-eslint-v9",
-    "eslint-plugin-jsdoc": "^52.0.4",
+    "eslint": "^9.34.0",
+    "eslint-plugin-jsdoc": "^54.1.1",
     "eslint-plugin-unicorn": "^60.0.0",
     "pagefind": "^1.3.0"
   },

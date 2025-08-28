@@ -1,25 +1,11 @@
 import globals from 'globals';
 
-import digitalbazaar from 'eslint-config-digitalbazaar';
-import digitalbazaarJsdoc from 'eslint-config-digitalbazaar/jsdoc';
-import digitalbazaarModule from 'eslint-config-digitalbazaar/module';
+import config from '@digitalbazaar/eslint-config/node-recommended';
 
 export default [
-  ...digitalbazaar,
-  ...digitalbazaarJsdoc,
-  ...digitalbazaarModule,
+  ...config,
   {
     ignores: ['_site', '!.eleventy.js'],
-  },
-  {
-    languageOptions: {
-      globals: {
-        ...globals.node
-      }
-    },
-    rules: {
-      'unicorn/prefer-node-protocol': 'error'
-    }
   },
   {
     files: [
