@@ -29,7 +29,7 @@ const store = reactive({
         this.toggleLoading();
       }
     }
-  },
+  }
 });
 
 // Make global state available with app scopes

@@ -34,7 +34,7 @@ ctx.forEach(elementCtx => {
           pointHoverBackgroundColor: white,
           pointBackgroundColor: fomanticGreen,
           pointHoverBorderColor: fomanticGreen,
-          backgroundColor: fomanticGreenTransparent,
+          backgroundColor: fomanticGreenTransparent
         }
       ]
     },
@@ -56,6 +56,6 @@ ctx.forEach(elementCtx => {
           }
         }
       }
-    },
+    }
   });
 });

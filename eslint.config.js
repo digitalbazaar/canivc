@@ -5,7 +5,7 @@ import config from '@digitalbazaar/eslint-config/node-recommended';
 export default [
   ...config,
   {
-    ignores: ['_site', '!.eleventy.js'],
+    ignores: ['_site', '!.eleventy.js']
   },
   {
     files: [
