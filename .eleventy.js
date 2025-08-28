@@ -26,15 +26,15 @@ export default function(eleventyConfig) {
   /* Markdown Overrides */
   const markdownLibrary = markdownIt({
     html: true,
-    linkify: true,
+    linkify: true
   }).use(markdownItAnchor, {
-    permalink: false,
+    permalink: false
   });
   eleventyConfig.setLibrary('md', markdownLibrary);
 
   eleventyConfig.addPlugin(syntaxHighlight);
   eleventyConfig.addPlugin(eleventyMermaidPlugin, {
-    extra_classes: 'attached',
+    extra_classes: 'attached'
   });
 
   // Shortcode components
@@ -88,7 +88,7 @@ export default function(eleventyConfig) {
     dir: {
       input: 'src/',
 
-      layouts: '_layouts',
-    },
+      layouts: '_layouts'
+    }
   };
 }

@@ -9,7 +9,7 @@ const specUrls = [
   'https://w3c-ccg.github.io/did-key-test-suite/index.json',
   'https://w3c-ccg.github.io/vc-api-issuer-test-suite/index.json',
   'https://w3c-ccg.github.io/vc-api-verifier-test-suite/index.json',
-  'https://w3c.github.io/vc-bitstring-status-list-test-suite/index.json',
+  'https://w3c.github.io/vc-bitstring-status-list-test-suite/index.json'
 ];
 
 // Helper function: Remove company name suffix (Digital Bazaar: P-256)
@@ -30,7 +30,7 @@ const extractCompanyResultsByTestType = results => {
         const testState = test.state;
         all[testState] = all[testState] ? all[testState] + 1 : 1;
         return {total: tests.length, ...all};
-      }, {}),
+      }, {})
     };
   };
 
@@ -49,7 +49,7 @@ const extractCompanyResultsByTestType = results => {
         ...all,
         [testType]: testSuiteDataByTestType[testType].map(({suites}) => {
           return suites.reduce(getTestResults, {});
-        }),
+        })
       };
     },
     {}
@@ -214,7 +214,7 @@ export default async function() {
   const promises = specUrls.map(url =>
     EleventyFetch(url, {
       duration: '1w', // save for 1 week
-      type: 'json', // we’ll parse JSON for you
+      type: 'json' // we’ll parse JSON for you
     })
   );
 
