@@ -23,15 +23,18 @@ breadcrumbs:
     {%- endfor -%}
     </div>
   </div>
+
+  {%- assign currentSpec = results.specsImplementedBy | where: 'title', report.respecConfig.title | first -%}
+  {%- if currentSpec.implementations.length > 0 -%}
   <div class="column">
     <div class="ui segment">
       <h3 class="ui header">Implementations</h3>
       <ul>
-        {%- assign currentSpec = results.specsImplementedBy | where: 'title', matrix.title | first -%}
         {%- for imp in currentSpec.implementations -%}
         <li><a href="/implementations/{{ imp | slugify }}">{{ imp }}</a></li>
         {%- endfor -%}
       </ul>
     </div>
   </div>
+  {%- endif -%}
 </div>
