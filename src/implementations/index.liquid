@@ -7,14 +7,9 @@ title: Implementations
     <i class="small info icon grey"></i>
   </div>
   <div class="ui bulleted list" style="margin-top: 0 !important;">
-  {% assign list = "" %}
-  {%- for i in implementations -%}
-    {% assign list = list | append: i[0] | append: ","  %}
-  {%- endfor -%}
-  {% assign names = list | split: "," | sort_natural %}
-  {%- for name in names -%}
+  {%- for imp in implementations -%}
     <div class="item">
-      <a href="{{ name | slugify }}">{{ name }}</a>
+      <a href="{{ imp[0] | slugify }}">{{ imp[0] }}</a>
     </div>
   {%- endfor -%}
   </div>
