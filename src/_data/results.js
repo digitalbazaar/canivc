@@ -9,7 +9,8 @@ const specUrls = [
   'https://w3c-ccg.github.io/did-key-test-suite/index.json',
   'https://w3c-ccg.github.io/vc-api-issuer-test-suite/index.json',
   'https://w3c-ccg.github.io/vc-api-verifier-test-suite/index.json',
-  'https://w3c.github.io/vc-bitstring-status-list-test-suite/index.json'
+  'https://w3c.github.io/vc-bitstring-status-list-test-suite/index.json',
+  'https://w3c.github.io/vc-jose-cose-test-suite/index.json'
 ];
 
 // Helper function: Remove company name suffix (Digital Bazaar: P-256)
