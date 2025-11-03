@@ -11,7 +11,7 @@ permalink: "/implementations/{{ vendor | slugify }}/"
 <h1 style="text-align: center">{{ vendor }}</h1>
 {% for testCategory in testCategories %}
 <!-- Only showing issuer and verifier statistics -->
-{% if testCategory[0] == "Issuer" or testCategory[0] == "Verifier"  %}
+{% if testCategory[0] == "Issuer" or testCategory[0] == "Verifier" or testCategory[0] == "Implementation" %}
 <div class="ui very padded segment">
   <h2 style="border-bottom: 2px solid gray; width: fit-content">
     {{ testCategory[0] }}
