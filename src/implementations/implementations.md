@@ -9,6 +9,8 @@ eleventyComputed:
   description: "Verifiable Credential test suite results and statistics for {{ vendor }}."
 ---
 
+<textarea>{{ results.all | json: 2 }}</textarea>
+
 {% assign info = implementations[vendor] %}
 {% assign testCategories = results.testsByCompany[vendor] %}
 
@@ -16,7 +18,6 @@ eleventyComputed:
 
 {% for testCategory in testCategories %}
 <!-- Only showing issuer and verifier statistics -->
-{% if testCategory[0] == "Issuer" or testCategory[0] == "Verifier" or testCategory[0] == "Implementation" %}
 <div class="ui very padded segment">
   <h2 style="border-bottom: 2px solid gray; width: fit-content">
     {{ testCategory[0] }}
@@ -65,7 +66,6 @@ eleventyComputed:
     </div>
   </div>
 </div>
-{% endif %}
 {% endfor %}
 
 <h3 class="ui header">Specifcations Tested
