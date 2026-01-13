@@ -226,7 +226,10 @@ function implementersOfSpecs(results) {
       (matrix.suites || []).forEach(suite => {
         const vendor = removeNameSuffix(suite.title);
         if(!map[vendor]) {
-          map[vendor] = {specs: []};
+          map[vendor] = {
+            specs: [],
+            totals: {passed: 0, failed: 0, pending: 0, total: 0}
+          };
         }
 
         // find or create spec entry
@@ -253,6 +256,12 @@ function implementersOfSpecs(results) {
         specEntry.stats.failed += failed;
         specEntry.stats.pending += pending;
         specEntry.stats.total += total;
+
+        // aggregate counts into vendor totals
+        map[vendor].totals.passed += passed;
+        map[vendor].totals.failed += failed;
+        map[vendor].totals.pending += pending;
+        map[vendor].totals.total += total;
       });
     });
   });

@@ -65,7 +65,14 @@ permalink: "/implementations/{{ vendor | slugify }}/"
 {% endif %}
 {% endfor %}
 
-<h3>Specifcations Tested</h3>
+<h3>Specifcations Tested
+  {%- if results.implementersOfSpecs[vendor].totals %}
+    <span class="ui basic label" title="Tests Passed / Total Tests">
+      {{ results.implementersOfSpecs[vendor].totals.passed }}
+      <span class="detail">{{ results.implementersOfSpecs[vendor].totals.total }}</span>
+    </span>
+  {% endif -%}
+</h3>
 <ul>
   {% assign specs = results.implementersOfSpecs[vendor].specs %}
   {% for spec in specs %}
