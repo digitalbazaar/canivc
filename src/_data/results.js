@@ -209,6 +209,59 @@ function removeSomeTestSections(results) {
   return curatedResults;
 }
 
+/**
+ * Build a mapping of implementers keyed by vendor name.
+ * Each vendor maps to an object containing a `specs` array
+ * listing spec titles that vendor implements along with stats.
+ *
+ * @param {Array} results - Results fetched from spec index.json files.
+ * @returns {object} Mapping of vendor name to objects with a `specs` array.
+ */
+function implementersOfSpecs(results) {
+  const map = {};
+  results.forEach(result => {
+    const specTitle = result.respecConfig?.title || result.title || '';
+    const specShort = result.respecConfig?.shortName || '';
+    (result.matrices || []).forEach(matrix => {
+      (matrix.suites || []).forEach(suite => {
+        const vendor = removeNameSuffix(suite.title);
+        if(!map[vendor]) {
+          map[vendor] = {specs: []};
+        }
+
+        // find or create spec entry
+        let specEntry = map[vendor].specs.find(s => (
+          (specShort && s.shortName === specShort) ||
+          (!specShort && s.title === specTitle)
+        ));
+        if(!specEntry) {
+          specEntry = {
+            title: specTitle,
+            shortName: specShort,
+            stats: {passed: 0, failed: 0, pending: 0, total: 0}
+          };
+          map[vendor].specs.push(specEntry);
+        }
+
+        // aggregate counts from this suite into the spec entry
+        const tests = suite.tests || [];
+        const passed = tests.filter(t => t.state === 'passed').length;
+        const failed = tests.filter(t => t.state === 'failed').length;
+        const pending = tests.filter(t => t.state === 'pending').length;
+        const total = tests.length;
+        specEntry.stats.passed += passed;
+        specEntry.stats.failed += failed;
+        specEntry.stats.pending += pending;
+        specEntry.stats.total += total;
+      });
+    });
+  });
+  Object.values(map).forEach(v => {
+    v.specs.sort((a, b) => a.title.localeCompare(b.title));
+  });
+  return map;
+}
+
 // Repeated fetch
 export default async function() {
   /* This returns a promise */
@@ -238,6 +291,7 @@ export default async function() {
     testsByCompany: extractTestsByCompany(results),
     companiesByTestType: extractCompanyResultsByTestType(results),
     specsByGroup: collectSpecListByGroup(results),
+    implementersOfSpecs: implementersOfSpecs(results),
     specsImplementedBy: results.map(result => ({
       title: result.title,
       implementations: [
