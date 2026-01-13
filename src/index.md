@@ -55,24 +55,28 @@ showHero: true
       </div>
     </div>
   </div>
+  <div class="stretched row">
     <div class="column">
+      {%- assign passingIssuers = results.companiesByTestType.Issuer | where_exp: "tests", "tests.passed > 0" -%}
       {%- include "components/ScoreList.html"
         limit: 100
         listTitle: "Issuers"
         buttonLink: "/issuers"
         buttonText: "View all"
         tooltip: "Sorted by most tests passed"
-        itemList: results.companiesByTestType.Issuer -%}
+        itemList: passingIssuers -%}
     </div>
     <div class="column">
+      {%- assign passingVerifiers = results.companiesByTestType.Verifier | where_exp: "tests", "tests.passed > 0" -%}
       {%- include "components/ScoreList.html"
         limit: 100
         listTitle: "Verifiers"
         buttonText: "View all"
         buttonLink: "/verifiers"
         tooltip: "Sorted by most tests passed"
-        itemList: results.companiesByTestType.Verifier -%}
+        itemList: passingVerifiers -%}
     </div>
+  </div>
 </div>
 
 <!--
@@ -85,6 +89,6 @@ showHero: true
 <style>
 #gradient-title {
   background: rgb(33,133,208);
-  background: linear-gradient(130deg, rgba(33,133,208,1) 0%, rgba(33,133,208,0.5) 100%); 
+  background: linear-gradient(130deg, rgba(33,133,208,1) 0%, rgba(33,133,208,0.5) 100%);
 }
 </style>
