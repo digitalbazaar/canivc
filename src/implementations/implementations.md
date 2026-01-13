@@ -8,7 +8,9 @@ permalink: "/implementations/{{ vendor | slugify }}/"
 
 {% assign info = implementations[vendor] %}
 {% assign testCategories = results.testsByCompany[vendor] %}
+
 <h1 style="text-align: center">{{ vendor }}</h1>
+
 {% for testCategory in testCategories %}
 <!-- Only showing issuer and verifier statistics -->
 {% if testCategory[0] == "Issuer" or testCategory[0] == "Verifier" or testCategory[0] == "Implementation" %}
@@ -62,3 +64,20 @@ permalink: "/implementations/{{ vendor | slugify }}/"
 </div>
 {% endif %}
 {% endfor %}
+
+<h3>Specifcations Tested</h3>
+<ul>
+  {% assign specs = results.implementersOfSpecs[vendor].specs %}
+  {% for spec in specs %}
+    <li>
+      <a href="/reports/{{spec.shortName | slugify}}">
+        {{ spec.title }}
+      </a> {% if spec.stats %}
+          <span class="ui basic label" title="Tests Passed / Total Tests">
+            {{ spec.stats.passed }}
+            <span class="detail">{{ spec.stats.total }}</span>
+          </span>
+      {% endif %}
+    </li>
+  {% endfor %}
+</ul>
