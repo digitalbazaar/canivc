@@ -65,26 +65,26 @@ permalink: "/implementations/{{ vendor | slugify }}/"
 {% endif %}
 {% endfor %}
 
-<h3>Specifcations Tested
+<h3 class="ui header">Specifcations Tested
   {%- if results.implementersOfSpecs[vendor].totals %}
-    <span class="ui basic label" title="Tests Passed / Total Tests">
-      {{ results.implementersOfSpecs[vendor].totals.passed }}
-      <span class="detail">{{ results.implementersOfSpecs[vendor].totals.total }}</span>
+    <span class="sub header" title="Tests Passed / Total Tests">
+      {{ results.implementersOfSpecs[vendor].totals.passed }} / {{ results.implementersOfSpecs[vendor].totals.total }}
     </span>
   {% endif -%}
 </h3>
-<ul>
-  {% assign specs = results.implementersOfSpecs[vendor].specs %}
-  {% for spec in specs %}
-    <li>
-      <a href="/reports/{{spec.shortName | slugify}}">
-        {{ spec.title }}
-      </a> {% if spec.stats %}
-          <span class="ui basic label" title="Tests Passed / Total Tests">
-            {{ spec.stats.passed }}
-            <span class="detail">{{ spec.stats.total }}</span>
-          </span>
-      {% endif %}
-    </li>
-  {% endfor %}
-</ul>
+<div class="ui stackable grid">
+  {%- assign specs = results.implementersOfSpecs[vendor].specs -%}
+  {%- for spec in specs -%}
+    <div class="row">
+      <div class="seven wide column">
+        <a class="ui medium header" href="/reports/{{spec.shortName | slugify}}">
+          {{ spec.title }}
+        </a>
+      </div>
+      <div class="four wide column">
+        {%- BarRating spec.stats.passed spec.stats.pending spec.stats.failed spec.stats.total '100%' -%}
+      </div>
+      <div class="two wide column">{{ spec.stats.passed }} / {{ spec.stats.total }}</div>
+    </div>
+  {%- endfor %}
+</div>
