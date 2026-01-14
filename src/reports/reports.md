@@ -7,6 +7,9 @@ permalink: "/reports/{{ report.respecConfig.shortName | slugify }}/"
 breadcrumbs:
   - href: /reports/
     title: Reports
+eleventyComputed:
+  title: "{{ report.respecConfig.title }}"
+  description: "Test suite results and implementation statistics for {{ report.respecConfig.title }}."
 ---
 
 {% include "components/ReportDetails.html"

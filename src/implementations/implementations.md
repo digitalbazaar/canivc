@@ -4,6 +4,9 @@ pagination:
   size: 1
   alias: vendor
 permalink: "/implementations/{{ vendor | slugify }}/"
+eleventyComputed:
+  title: "{{ vendor }} Implementation Report"
+  description: "Verifiable Credential test suite results and statistics for {{ vendor }}."
 ---
 
 {% assign info = implementations[vendor] %}
