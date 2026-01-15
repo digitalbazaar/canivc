@@ -13,10 +13,10 @@
 {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "name":"{{ site.title }}",
+  "name": "{{ site.title }}",
   "headline": "{{ site.title }}{% if title %} | {{ title }}{% endif %}",
   "description": "{{ description | default: site.description }}",
-  "url":"{{ site.url }}{{ page.url | remove_first: '/' }}",
-  "inLanguage": "{{ site.lang | default: "en-US" }}"
+  "url": "{{ site.url }}{{ page.url | remove_first: '/' }}",
+  "inLanguage": "{{ site.lang }}"
 }
 </script>
