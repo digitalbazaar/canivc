@@ -6,24 +6,17 @@ pagination:
 permalink: "/implementations/{{ vendor | slugify }}/"
 ---
 
-<textarea>{{ results.all | json: 2 }}</textarea>
-
 {% assign info = implementations[vendor] %}
 {% assign testCategories = results.testsByCompany[vendor] %}
 
 <h1 style="text-align: center">{{ vendor }}</h1>
 
-{% for testCategory in testCategories %}
-<!-- Only showing issuer and verifier statistics -->
 <div class="ui very padded segment">
-  <h2 style="border-bottom: 2px solid gray; width: fit-content">
-    {{ testCategory[0] }}
-  </h2>
   <!-- Spider Chart -->
   <div class="ui one column centered grid">
     <div class="column">
-      {% assign chartValues = results.vendorChartData.vendorResults[vendor][testCategory[0]] | getPercentages %}
-      {% assign chartLabels = results.vendorChartData.labels[testCategory[0]] %}
+      {% assign chartValues = results.implementersOfSpecs[vendor].specs | map: 'stats.passPercentage' | getPercentages %}
+      {% assign chartLabels =  results.implementersOfSpecs[vendor].specs | map: 'title' | json | replace: ' Interoperability Report', '' %}
       <canvas
         class="spider-chart"
         style="max-height: 400px"
@@ -31,12 +24,12 @@ permalink: "/implementations/{{ vendor | slugify }}/"
         data-chart-labels='{{chartLabels}}'></canvas>
     </div>
   </div>
-  <div class="ui two column grid stackable">
-    <div class="column">
+  <div class="ui stackable grid">
+    <div class="eight wide column">
       <div class="ui horizontal divider header">
-        <span class="ui small grey italic text">Test Count</span>
+        <span class="ui small grey italic text">Issuer</span>
       </div>
-      {% assign issuerResults = results.companiesByTestType[testCategory[0]] | findObjectByProperty: "text", vendor %}
+      {% assign issuerResults = results.companiesByTestType['Issuer'] | findObjectByProperty: "text", vendor %}
       <div style="display: flex; justify-content: center; margin-bottom: 32px">
       {%- include "components/BarRatingKey.html"
         passed: issuerResults.passed
@@ -48,27 +41,45 @@ permalink: "/implementations/{{ vendor | slugify }}/"
       {%- BarRating issuerResults.passed issuerResults.pending issuerResults.failed issuerResults.total "100%" -%}
       </div>
     </div>
-    <div class="column">
+    <div class="eight wide column">
       <div class="ui horizontal divider header">
-        <span class="ui small grey italic text">Test Results</span>
+        <span class="ui small grey italic text">Verifier</span>
       </div>
-      {% for link in testCategory[1] -%}
-      <a
-        style="margin-top: 0.25em"
-        class="tiny ui inverted secondary button"
-        href="{{link.url}}/{{ link.label | slugify }}">
-        {{ link.label }}
-      </a>
-      {% endfor -%}
+      {% assign verifierResults = results.companiesByTestType['Verifier'] | findObjectByProperty: "text", vendor %}
+      <div style="display: flex; justify-content: center; margin-bottom: 32px">
+      {%- include "components/BarRatingKey.html"
+        passed: verifierResults.passed
+        pending: verifierResults.pending
+        failed: verifierResults.failed
+        total: verifierResults.total -%}
+      </div>
+      <div style="display: flex; justify-content: center">
+      {%- BarRating verifierResults.passed verifierResults.pending verifierResults.failed verifierResults.total "100%" -%}
+      </div>
+    </div>
+    <div class="sixteen wide column">
+      <div class="ui horizontal divider header">
+        <span class="ui small grey italic text">Other</span>
+      </div>
+      {% assign implementationResults = results.companiesByTestType['Implementation'] | findObjectByProperty: "text", vendor %}
+      <div style="display: flex; justify-content: center; margin-bottom: 32px">
+      {%- include "components/BarRatingKey.html"
+        passed: implementationResults.passed
+        pending: implementationResults.pending
+        failed: implementationResults.failed
+        total: implementationResults.total -%}
+      </div>
+      <div style="display: flex; justify-content: center">
+      {%- BarRating implementationResults.passed implementationResults.pending implementationResults.failed implementationResults.total "100%" -%}
+      </div>
     </div>
   </div>
 </div>
-{% endfor %}
 
 <h3 class="ui header">Specifcations Tested
   {%- if results.implementersOfSpecs[vendor].totals %}
     <span class="sub header" title="Tests Passed / Total Tests">
-      {{ results.implementersOfSpecs[vendor].totals.passed }} / {{ results.implementersOfSpecs[vendor].totals.total }}
+      {{ results.implementersOfSpecs[vendor].totals.passed }} tests passed / {{ results.implementersOfSpecs[vendor].totals.total }} total
     </span>
   {% endif -%}
 </h3>
