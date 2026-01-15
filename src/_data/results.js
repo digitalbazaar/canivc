@@ -256,6 +256,8 @@ function implementersOfSpecs(results) {
         specEntry.stats.failed += failed;
         specEntry.stats.pending += pending;
         specEntry.stats.total += total;
+        specEntry.stats.passPercentage = specEntry.stats.total === 0 ? 0 :
+          Math.round((specEntry.stats.passed / specEntry.stats.total) * 100);
 
         // aggregate counts into vendor totals
         map[vendor].totals.passed += passed;
