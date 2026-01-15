@@ -28,11 +28,28 @@ eleventyComputed:
     </div>
   </div>
   <div class="ui stackable grid">
-    <div class="eight wide column">
+    {%- liquid
+        assign issuerResults = results.companiesByTestType['Issuer'] | findObjectByProperty: "text", vendor
+        assign verifierResults = results.companiesByTestType['Verifier'] | findObjectByProperty: "text", vendor
+        assign implementationResults = results.companiesByTestType['Implementation'] | findObjectByProperty: "text", vendor
+
+        assign definedResultsCount = 0
+        if issuerResults
+          assign definedResultsCount = definedResultsCount | plus: 1
+        endif
+        if verifierResults
+          assign definedResultsCount = definedResultsCount | plus: 1
+        endif
+        if implementationResults
+          assign definedResultsCount = definedResultsCount | plus: 1
+        endif
+    -%}
+
+    {%- if issuerResults.total > 0 %}
+    <div class="{% if definedResultsCount == 1 %}sixteen{% else %}eight{% endif %} wide column">
       <div class="ui horizontal divider header">
         <span class="ui small grey italic text">Issuer</span>
       </div>
-      {% assign issuerResults = results.companiesByTestType['Issuer'] | findObjectByProperty: "text", vendor %}
       <div style="display: flex; justify-content: center; margin-bottom: 32px">
       {%- include "components/BarRatingKey.html"
         passed: issuerResults.passed
@@ -44,11 +61,13 @@ eleventyComputed:
       {%- BarRating issuerResults.passed issuerResults.pending issuerResults.failed issuerResults.total "100%" -%}
       </div>
     </div>
-    <div class="eight wide column">
+    {%- endif -%}
+
+    {%- if verifierResults.total > 0 -%}
+    <div class="{% if definedResultsCount == 1 %}sixteen{% else %}eight{% endif %} wide column">
       <div class="ui horizontal divider header">
         <span class="ui small grey italic text">Verifier</span>
       </div>
-      {% assign verifierResults = results.companiesByTestType['Verifier'] | findObjectByProperty: "text", vendor %}
       <div style="display: flex; justify-content: center; margin-bottom: 32px">
       {%- include "components/BarRatingKey.html"
         passed: verifierResults.passed
@@ -60,11 +79,13 @@ eleventyComputed:
       {%- BarRating verifierResults.passed verifierResults.pending verifierResults.failed verifierResults.total "100%" -%}
       </div>
     </div>
-    <div class="sixteen wide column">
+    {%- endif -%}
+
+    {%- if implementationResults.total > 0 -%}
+    <div class="{% if definedResultsCount == 1 or definedResultsCount == 3 %}sixteen{% else %}eight{% endif %} wide column">
       <div class="ui horizontal divider header">
         <span class="ui small grey italic text">Other</span>
       </div>
-      {% assign implementationResults = results.companiesByTestType['Implementation'] | findObjectByProperty: "text", vendor %}
       <div style="display: flex; justify-content: center; margin-bottom: 32px">
       {%- include "components/BarRatingKey.html"
         passed: implementationResults.passed
@@ -76,6 +97,7 @@ eleventyComputed:
       {%- BarRating implementationResults.passed implementationResults.pending implementationResults.failed implementationResults.total "100%" -%}
       </div>
     </div>
+    {%- endif -%}
   </div>
 </div>
 
