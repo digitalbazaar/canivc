@@ -54,7 +54,7 @@ eleventyComputed:
       {%- include "components/BarRatingKey.html" stats: issuerResults -%}
       </div>
       <div style="display: flex; justify-content: center">
-      {%- BarRating issuerResults.passed issuerResults.pending issuerResults.failed issuerResults.total "100%" -%}
+      {%- BarRating issuerResults -%}
       </div>
     </div>
     {%- endif -%}
@@ -68,7 +68,7 @@ eleventyComputed:
       {%- include "components/BarRatingKey.html" stats: verifierResults -%}
       </div>
       <div style="display: flex; justify-content: center">
-      {%- BarRating verifierResults.passed verifierResults.pending verifierResults.failed verifierResults.total "100%" -%}
+      {%- BarRating verifierResults -%}
       </div>
     </div>
     {%- endif -%}
@@ -82,7 +82,7 @@ eleventyComputed:
       {%- include "components/BarRatingKey.html" stats: implementationResults -%}
       </div>
       <div style="display: flex; justify-content: center">
-      {%- BarRating implementationResults.passed implementationResults.pending implementationResults.failed implementationResults.total "100%" -%}
+      {%- BarRating implementationResults -%}
       </div>
     </div>
     {%- endif -%}
@@ -106,7 +106,7 @@ eleventyComputed:
         </a>
       </div>
       <div class="four wide column">
-        {%- BarRating spec.stats.passed spec.stats.pending spec.stats.failed spec.stats.total '100%' -%}
+        {%- BarRating spec.stats '100%' -%}
       </div>
       <div class="two wide column">{{ spec.stats.passed }} / {{ spec.stats.total }}</div>
     </div>

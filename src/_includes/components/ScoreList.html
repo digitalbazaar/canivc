@@ -11,7 +11,7 @@
     {%- for item in itemList limit:limit -%}
     <div class="item" style="line-height: 2em; margin-bottom: 4px">
       <div style="display: flex; align-items: center;">
-        {% BarRating item.passed item.pending item.failed item.total %}
+        {% BarRating item '40%' %}
         <p style="width: 60%; white-space: nowrap; text-overflow: ellipsis; overflow-x: hidden;">
           <a href="/implementations/{{ item.text | slugify }}" style="margin-left: 8px; font-size: 1em">
             {{ item.text }},
