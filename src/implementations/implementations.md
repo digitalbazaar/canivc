@@ -51,11 +51,7 @@ eleventyComputed:
         <span class="ui small grey italic text">Issuer</span>
       </div>
       <div style="display: flex; justify-content: center; margin-bottom: 32px">
-      {%- include "components/BarRatingKey.html"
-        passed: issuerResults.passed
-        pending: issuerResults.pending
-        failed: issuerResults.failed
-        total: issuerResults.total -%}
+      {%- include "components/BarRatingKey.html" stats: issuerResults -%}
       </div>
       <div style="display: flex; justify-content: center">
       {%- BarRating issuerResults.passed issuerResults.pending issuerResults.failed issuerResults.total "100%" -%}
@@ -69,11 +65,7 @@ eleventyComputed:
         <span class="ui small grey italic text">Verifier</span>
       </div>
       <div style="display: flex; justify-content: center; margin-bottom: 32px">
-      {%- include "components/BarRatingKey.html"
-        passed: verifierResults.passed
-        pending: verifierResults.pending
-        failed: verifierResults.failed
-        total: verifierResults.total -%}
+      {%- include "components/BarRatingKey.html" stats: verifierResults -%}
       </div>
       <div style="display: flex; justify-content: center">
       {%- BarRating verifierResults.passed verifierResults.pending verifierResults.failed verifierResults.total "100%" -%}
@@ -87,11 +79,7 @@ eleventyComputed:
         <span class="ui small grey italic text">Other</span>
       </div>
       <div style="display: flex; justify-content: center; margin-bottom: 32px">
-      {%- include "components/BarRatingKey.html"
-        passed: implementationResults.passed
-        pending: implementationResults.pending
-        failed: implementationResults.failed
-        total: implementationResults.total -%}
+      {%- include "components/BarRatingKey.html" stats: implementationResults -%}
       </div>
       <div style="display: flex; justify-content: center">
       {%- BarRating implementationResults.passed implementationResults.pending implementationResults.failed implementationResults.total "100%" -%}
