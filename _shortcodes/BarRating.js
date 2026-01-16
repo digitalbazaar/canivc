@@ -9,16 +9,16 @@ const colors = {
 /**
  * BarRating component displays a bar of test statistics.
  *
- * @param {number} passed - Number of tests passed.
- * @param {number} pending - Number of tests pending.
- * @param {number} failed - Number of tests failed.
- * @param {number} total - Total number of tests.
- * @param {string} width - Width of component, defaults to 40%.
+ * @param {object} stats - Test statistics.
+ * @param {number} stats.passed - Number of tests passed.
+ * @param {number} stats.pending - Number of tests pending.
+ * @param {number} stats.failed - Number of tests failed.
+ * @param {number} stats.total - Total number of tests.
+ * @param {string} width - Width of component, defaults to 100%.
  * @returns {string} BarRating component for ScoreList.
  */
-function BarRating(passed, pending, failed, total, width) {
-  // Style
-  const componentWidth = width ? `${width}` : '40%';
+function BarRating(stats, width = '100%') {
+  const {passed, pending, failed, total} = stats;
   // Percentage of test passed, pending, & failed
   const passedWidth = Math.round(passed / total * 100);
   const pendingWidth = Math.round(pending / total * 100);
@@ -31,7 +31,7 @@ function BarRating(passed, pending, failed, total, width) {
         overflow-x: auto;
         max-width: 375px;
         border-radius: 3px;
-        width: ${componentWidth};
+        width: ${width};
         background-color: ${colors.background};"
     >
       <div
