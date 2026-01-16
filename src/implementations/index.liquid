@@ -9,7 +9,23 @@ title: Implementations
   <div class="ui bulleted list" style="margin-top: 0 !important;">
   {%- for imp in implementations -%}
     <div class="item">
+      {%- assign categories = results.testsByCompany[imp[0]] | keys | sort -%}
       <a href="{{ imp[0] | slugify }}">{{ imp[0] }}</a>
+      {% assign seen = '' %}
+      {% for cat in categories %}
+        {% assign lc = cat | downcase %}
+        {% if lc contains 'issuer' %}
+          {% assign labelName = 'Issuer' %}
+        {% elsif lc contains 'verifier' %}
+          {% assign labelName = 'Verifier' %}
+        {% else %}
+          {% assign labelName = 'Other' %}
+        {% endif %}
+        {% unless seen contains labelName %}
+          <label class="ui basic label">{{ labelName }}</label>
+          {% assign seen = seen | append: labelName | append: '|' %}
+        {% endunless %}
+      {% endfor %}
     </div>
   {%- endfor -%}
   </div>
