@@ -60,6 +60,9 @@ export default function(eleventyConfig) {
   eleventyConfig.addFilter('findObjectByProperty', (data, prop, value) => {
     return data ? data.find(item => item[prop] === value) : {};
   });
+  eleventyConfig.addFilter('keys', v => {
+    return Object.keys(v);
+  });
   eleventyConfig.addFilter('removeQuotes', str => {
     return str && str.replaceAll('"', '\'');
   });
