@@ -63,7 +63,7 @@
       {% for row in matrix.rows %}
         <tr>
           <!--This is the name of the test-->
-          <td>{{ row.id }}</td>
+          <td>{{ row.id }} {% if row.link %}<a href="{{ row.link }}"><i class="external icon"></i></a>{% endif %}</td>
           <!--These contain if the test passed, failed, or was skipped-->
           {% for cell in row.cells %}
             <td class="{{ cell.state | getStatusColors }} {{ cell.optional | getOptional }}">
