@@ -32,11 +32,20 @@ eleventyComputed:
   <div class="column">
     <div class="ui segment">
       <h3 class="ui header">Implementations</h3>
-      <ul>
+      <table class="ui celled table">
         {%- for imp in currentSpec.implementations -%}
-        <li><a href="/implementations/{{ imp | slugify }}">{{ imp }}</a></li>
+        <tr>
+          <td class="collapsing">
+            <a href="/implementations/{{ imp | slugify }}">{{ imp }}</a>
+          </td>
+          <td>
+            {%- assign stats = results.implementersOfSpecs[imp].specs | find: 'shortName', report.respecConfig.shortName | map: 'stats' | first -%}
+            {%- BarRating stats -%}
+          </td>
+          <td class="collapsing"><span class="passPercentage">{{ stats.passPercentage }}</span>%</td>
+        </tr>
         {%- endfor -%}
-      </ul>
+      </table>
     </div>
   </div>
   {%- endif -%}
